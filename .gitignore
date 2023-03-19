@@ -1,0 +1,14 @@
+
+/node_modules/
+*.lock
+/__tests__/
+
+
+/ios/Pods/
+/ios/Podfile.lock
+/ios/*.xcworkspace/*
+/ios/build
+
+/android/.gradle/
+/android/app/
+/android/*.properties
