@@ -11,10 +11,13 @@ const MainStack = createNativeStackNavigator();
 
 const MainRoutes = () => {
   return (
-    <MainStack.Navigator screenOptions={{ headerShown: false }}>
-      <MainStack.Screen name={SCREEN_NAME.HOME} component={Home} />
-      <MainStack.Screen name={SCREEN_NAME.DETAIL} component={Detail} />
-    </MainStack.Navigator>
+    <NavigationContainer>
+      <MainStack.Navigator screenOptions={{ headerShown: false }}>
+        <MainStack.Screen name={SCREEN_NAME.HOME} component={Home} />
+        <MainStack.Screen name={SCREEN_NAME.DETAIL} component={Detail} />
+      </MainStack.Navigator>
+    </NavigationContainer>
+    
   );
 };
 
