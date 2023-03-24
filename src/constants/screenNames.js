@@ -1,4 +1,4 @@
-export const SCREEN_NAME = {
-    HOME:'Home',
-    DETAIL:'Detail'
-}
+export const SCREEN_NAMES = {
+  HOME: 'Home',
+  DETAIL: 'Detail'
+};
