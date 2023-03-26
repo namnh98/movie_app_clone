@@ -1,8 +1,10 @@
 import { View, Text } from 'react-native';
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './styles';
 
-const Detail = () => {
+interface DetailProps {}
+
+const Detail: FC<DetailProps> = () => {
   return (
     <View style={styles.container}>
       <Text>Detail</Text>
