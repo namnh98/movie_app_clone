@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
   list: {
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: scale(8)
+    marginTop: scale(8),
+    paddingBottom: scale(24)
   },
   seperator: {
     height: scale(16)
