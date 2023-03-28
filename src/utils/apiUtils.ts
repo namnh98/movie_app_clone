@@ -8,7 +8,7 @@ const EXPIRED_TOKEN =
 
 //HANDLE INTERCEPTER
 const unregister = fetchIntercept.register({
-  request: async function (url, config) {
+  request: async function(url, config) {
     // let token = await getToken();
     let token = EXPIRED_TOKEN;
     const tempConfig = { ...config };
@@ -20,12 +20,12 @@ const unregister = fetchIntercept.register({
     return [url, tempConfig];
   },
 
-  requestError: function (error) {
+  requestError: function(error) {
     // Called when an error occured during another 'request' interceptor call
     return Promise.reject(error);
   },
 
-  response: async function (response) {
+  response: async function(response) {
     if (response?.status === 401) {
       await refreshToken();
     }
@@ -34,7 +34,7 @@ const unregister = fetchIntercept.register({
     return response;
   },
 
-  responseError: async function (error) {
+  responseError: async function(error) {
     // Handle an fetch error
     return Promise.reject(error);
   }
@@ -87,7 +87,7 @@ class APIUtils {
       let responseJson = {};
       try {
         responseJson = await response.blob();
-      } catch (err) {}
+      } catch (err) { }
       if (__DEV__) {
         console.log('>>>>>response>>>>>', {
           url,
@@ -131,7 +131,7 @@ class APIUtils {
         let responseJson = {};
         try {
           responseJson = await response.json();
-        } catch (err) {}
+        } catch (err) { }
         if (__DEV__) {
           console.log('>>>>>response>>>>>', {
             url,
@@ -149,17 +149,8 @@ class APIUtils {
         throw { data: responseJson, status: response.status };
       })
       .catch(async error => {
-        // check internet
-        const connectionInfo = await NetInfo.fetch();
 
-        if (
-          !connectionInfo?.isConnected ||
-          connectionInfo?.type === NetInfoStateType.none ||
-          connectionInfo?.type === NetInfoStateType.unknown
-        ) {
-          throw new Error('common.cannotConnected');
-        }
-        throw error;
+        throw error
       });
   };
 
@@ -171,8 +162,6 @@ class APIUtils {
     const { headers, params, method, body, ...restConfig } = config;
 
     return {
-      cache: 'default',
-      credentials: 'include',
       headers: {
         ...headersDefault
       },
@@ -192,12 +181,8 @@ class APIUtils {
     const { headers, params, method, body, ...restConfig } = config;
 
     return {
-      cache: 'default',
-      credentials: 'include',
       headers: {
         ...headersDefault,
-        ...config.headers,
-        ...this.additionalHeader
       },
       ...restConfig,
       method,
