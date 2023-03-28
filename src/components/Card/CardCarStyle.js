@@ -5,8 +5,8 @@ const styles = StyleSheet.create({
         width:164,
         height:230,
         alignItems:'center',
-        justifyContent:'center',
-        marginVertical:'10%'
+        justifyContent:'flex-start',
+        zIndex:1
     },
     ImageMovie:{
         width:'100%',
@@ -14,12 +14,13 @@ const styles = StyleSheet.create({
         borderRadius:12,
     },
     boxContent:{
-        marginTop:'4%'
+        width:'100%',
+        paddingVertical:'8%'
     },
     title_text:{
         fontSize:16,
         fontWeight:700,
-        color:'white',
+        color:'white'
     },
     subTitle_text:{
         fontSize:14,

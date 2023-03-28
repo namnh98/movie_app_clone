@@ -3,11 +3,11 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'rgba(31, 41, 61, 1)',
-    paddingBottom:'36%'
+    backgroundColor:'#111620',
   },
   content:{
-    paddingHorizontal:16
+    paddingHorizontal:16,
+    flex:1,
   },
   Header:{
     flexDirection:'row',
@@ -24,16 +24,9 @@ const styles = StyleSheet.create({
     paddingVerticale:10,
     justifyContent:'center'
   },
-  CardCarList:{
-    width:'100%',
-    height:'100%',
-    flexDirection:'row',
-    flexWrap:'wrap',
+  FlatListContainerStyle:{
+    paddingVertical:'10%',
   },
-  ListContainer:{
-    height:'100%'
-  }
-
 });
 
 export default styles;
