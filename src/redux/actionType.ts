@@ -19,3 +19,6 @@ export const CHANGE_LANGUAGE = actionType('SETTINGS/CHANGE_LANGUAGE');
 export const SHOW_ERROR = actionType('system/SHOW_ERROR');
 export const CLEAR_ERROR = actionType('system/CLEAR_ERROR');
 export const INITIAL_PROPS = actionType('system/INITIAL_PROPS');
+
+//MOVIE
+export const GET_LIST_MOVIE = actionType('movie/GET_LIST_MOVIE');

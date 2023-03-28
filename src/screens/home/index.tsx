@@ -5,7 +5,7 @@ import AppHeader from '@components/AppHeader';
 import AppText from '@components/AppText';
 import { useNavigation } from '@react-navigation/core';
 import { MainStackParams } from '@routes/types';
-import React, { FC } from 'react';
+import React, { FC, useCallback, useEffect } from 'react';
 import { Alert, FlatList } from 'react-native';
 import { Image, View } from 'react-native';
 import MovieItem from './components/MovieItem';
@@ -13,6 +13,8 @@ import styles from './styles';
 import { HomeProps, MovieItemProps } from './types';
 import { DEVICE } from '@constants/scale';
 import { formatData } from '@helpers/convert';
+import { useDispatch } from 'react-redux';
+import { getListMovieHandler } from '@redux-app/actions/movie';
 
 const DUMMY_DATA = [
   { id: 1, name: 'The Batman', type: 'action', rating: 8.1, image: IMG_SampleMovie },
@@ -31,6 +33,25 @@ const DUMMY_DATA = [
 const HomeScreen: FC<HomeProps> = () => {
   const navigation = useNavigation<MainStackParams>();
   const isLandscape = DEVICE.WIDTH > DEVICE.HEIGHT;
+  const dispatch = useDispatch();
+
+  const getListMovie = useCallback(() => {
+    // const options = {
+    //   method: 'GET',
+    //   headers: {
+    //     'X-RapidAPI-Key': 'e3590b9f5dmsh2fdba8c41a2c970p139e42jsnfc569da06f2d',
+    //     'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
+    //   }
+    // };
+    // fetch('https://moviesdatabase.p.rapidapi.com/titles', options)
+    //   .then(response => response.json())
+    //   .then(response => console.log(response))
+    //   .catch(err => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    getListMovie();
+  }, []);
 
   const pressRightHeader = () => {
     Alert.alert('Thông báo', 'Chức năng đang phát triển');

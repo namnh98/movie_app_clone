@@ -4,6 +4,7 @@ import { combineReducers } from 'redux';
 import system from './system';
 import setting from './setting';
 import loading from './loading';
+import movieReducer from './movie';
 
 const systemPersistConfig = {
   key: 'system',
@@ -48,5 +49,6 @@ const employeePersistConfig = {
 export default combineReducers({
   system: persistReducer(systemPersistConfig, system),
   loading,
-  setting: persistReducer(settingPersistConfig, setting)
+  setting: persistReducer(settingPersistConfig, setting),
+  movieReducer
 });
