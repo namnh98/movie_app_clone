@@ -5,7 +5,7 @@ import HomeBar from '../../components/TopBar/HomeBar';
 import Button from '../../components/Button/Button';
 import CardCar from '../../components/Card/CardCar';
 import { MovieData } from '../../constants/MovieData';
-import { Api, getApi } from '../../services/Api';
+// import { Api, getApi } from '../../services/Api';
 
 const HomeScreen = () => {
   
@@ -14,10 +14,6 @@ const HomeScreen = () => {
         data={item} 
         container2={[index % 2 === 0 ? {marginRight:'27%'} : {},{marginBottom:'20%'}]}/>
   }
-  
-  getApi()
-  console.log(Api)
-
 
   return (
     <View style={styles.container}>
