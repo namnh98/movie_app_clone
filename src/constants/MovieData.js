@@ -111,3 +111,51 @@ export const MovieData ={
     "q": "game%20of%20thr",
     "v": 1
   }
+  export const MovieData2 = [
+    {
+     name:'The Batman',
+     type: 'Action',
+     score:'8.1'
+    },
+    {
+      name:'The Batman',
+      type: 'Action',
+      score:'8.1'
+    },
+    {
+      name:'The Batman',
+      type: 'Action',
+      score:'8.1'
+    },
+    {
+      name:'The Batman',
+      type: 'Action',
+      score:'8.1'
+    },
+    {
+      name:'The Batman',
+      type: 'Action',
+      score:'8.1'
+    },
+    {
+      name:'The Batman',
+      type: 'Action',
+      score:'8.1'
+    },
+    {
+      name:'The Batman',
+      type: 'Action',
+      score:'8.1'
+    },
+    {
+      name:'The Batman',
+      type: 'Action',
+      score:'8.1'
+    },
+    {
+      name:'The Batman',
+      type: 'Action',
+      score:'8.1'
+    },
+  ]
+

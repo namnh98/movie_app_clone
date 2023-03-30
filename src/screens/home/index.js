@@ -4,8 +4,7 @@ import styles from './styles';
 import HomeBar from '../../components/TopBar/HomeBar';
 import Button from '../../components/Button/Button';
 import CardCar from '../../components/Card/CardCar';
-import { MovieData } from '../../constants/MovieData';
-// import { Api, getApi } from '../../services/Api';
+import { MovieData, MovieData2 } from '../../constants/MovieData';
 
 const HomeScreen = () => {
   
@@ -14,6 +13,10 @@ const HomeScreen = () => {
         data={item} 
         container2={[index % 2 === 0 ? {marginRight:'27%'} : {},{marginBottom:'20%'}]}/>
   }
+  React.useEffect(() => {
+    
+    
+  },[])
 
   return (
     <View style={styles.container}>
@@ -30,14 +33,12 @@ const HomeScreen = () => {
             style={styles.BtnSeacrch}/>
         </View>
         <FlatList
-              data={MovieData}
+              data={MovieData2}
               renderItem={renderItemMovies}
               keyExtractor={(item) => item.id}
               numColumns={2}
               ItemSeparatorComponent={<View style={styles.Separator}/>}
               contentContainerStyle={styles.FlatListContainerStyle}/>
-        
-        
       </View>
     </View>
   );
