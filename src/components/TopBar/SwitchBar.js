@@ -8,7 +8,7 @@ const SwitchBar = (props) => {
   const { mode = 'about',
   } = props
 
-  let [TabViewIndex, setTabViewIndex] = useState(0);
+  let [TabViewIndex, setTabViewIndex] = useState('fist');
 
   const [routes] = useState([
     {
@@ -19,10 +19,6 @@ const SwitchBar = (props) => {
       key: 'second',
       title: 'Sessions'
     },
-    {
-      key: 'second',
-      title: 'Sessions'
-    }
   ])
   const ButtonActive = {
     btnStyle: [styles.ButttonDefault, styles.ButtonOpacityLight],
@@ -36,11 +32,12 @@ const SwitchBar = (props) => {
     const html = routes.map((e, i) => {
       return <Button
         TypeTagChild={'Text'}
-        style={TabViewIndex === i ? ButtonActive.btnStyle : ButtonUnActive.btnStyle}
+        style={TabViewIndex === e.key ? ButtonActive.btnStyle : ButtonUnActive.btnStyle}
         content={e.title}
-        ContentStyle={TabViewIndex === i ? ButtonActive.fontStyle : ButtonUnActive.fontStyle}
-        onPress={() => TabViewIndex !== i ? setTabViewIndex(i) : setTabViewIndex(TabViewIndex)} />
+        ContentStyle={TabViewIndex === e.key ? ButtonActive.fontStyle : ButtonUnActive.fontStyle}
+        onPress={() => TabViewIndex !== e.key ? setTabViewIndex(e.key) : setTabViewIndex(TabViewIndex)} />
     })
+    console.log('key: ',TabViewIndex)
     return html
   }
   return (

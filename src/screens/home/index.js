@@ -1,4 +1,4 @@
-import { View, Text, Modal, TouchableOpacity,Image, ScrollView, FlatList } from 'react-native';
+import { View, Text, Modal, TouchableOpacity, Image, ScrollView, FlatList } from 'react-native';
 import React, { useState } from 'react';
 import styles from './styles';
 import HomeBar from '../../components/TopBar/HomeBar';
@@ -7,38 +7,38 @@ import CardCar from '../../components/Card/CardCar';
 import { MovieData, MovieData2 } from '../../constants/MovieData';
 
 const HomeScreen = () => {
-  
-  const renderItemMovies = ({item,index}) => {
-    return  <CardCar 
-        data={item} 
-        container2={[index % 2 === 0 ? {marginRight:'27%'} : {},{marginBottom:'20%'}]}/>
+
+  const renderItemMovies = ({ item, index }) => {
+    return <CardCar
+      data={item}
+      container2={[index % 2 === 0 ? { marginRight: '27%' } : {}, { marginBottom: '20%' }]} />
   }
   React.useEffect(() => {
-    
-    
-  },[])
+
+
+  }, [])
 
   return (
     <View style={styles.container}>
-      <HomeBar/>
+      <HomeBar />
       <View style={styles.content}>
         <View style={styles.Header}>
-          <Text 
+          <Text
             style={styles.title}>
-              Now in cinemas
+            Now in cinemas
           </Text>
           <Button
             TypeTagChild={'icon'}
             PatchImage={require('../../assets/img/icons/Search.png')}
-            style={styles.BtnSeacrch}/>
+            style={styles.BtnSeacrch} />
         </View>
         <FlatList
-              data={MovieData2}
-              renderItem={renderItemMovies}
-              keyExtractor={(item) => item.id}
-              numColumns={2}
-              ItemSeparatorComponent={<View style={styles.Separator}/>}
-              contentContainerStyle={styles.FlatListContainerStyle}/>
+          data={MovieData2}
+          renderItem={renderItemMovies}
+          keyExtractor={(item) => item.id}
+          numColumns={2}
+          ItemSeparatorComponent={<View style={styles.Separator} />}
+          contentContainerStyle={styles.FlatListContainerStyle} />
       </View>
     </View>
   );
