@@ -8,7 +8,7 @@ const SwitchBar = (props) => {
   const { mode = 'about',
   } = props
 
-  let [TabViewIndex, setTabViewIndex] = useState('fist');
+  let [TabViewKey, setTabViewKey] = useState('fist');
 
   const [routes] = useState([
     {
@@ -31,13 +31,13 @@ const SwitchBar = (props) => {
   const renderSwicthButtons = () => {
     const html = routes.map((e, i) => {
       return <Button
+        key={i}
         TypeTagChild={'Text'}
-        style={TabViewIndex === e.key ? ButtonActive.btnStyle : ButtonUnActive.btnStyle}
+        style={TabViewKey === e.key ? ButtonActive.btnStyle : ButtonUnActive.btnStyle}
         content={e.title}
-        ContentStyle={TabViewIndex === e.key ? ButtonActive.fontStyle : ButtonUnActive.fontStyle}
-        onPress={() => TabViewIndex !== e.key ? setTabViewIndex(e.key) : setTabViewIndex(TabViewIndex)} />
+        ContentStyle={TabViewKey === e.key ? ButtonActive.fontStyle : ButtonUnActive.fontStyle}
+        onPress={() => TabViewKey !== e.key ? setTabViewKey(e.key) : setTabViewKey(TabViewKey)} />
     })
-    console.log('key: ',TabViewIndex)
     return html
   }
   return (

@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         flexDirection:'column',
+        backgroundColor:'rgba(26, 34, 50, 1)'
     },
     boxImage:{
         height:210,
@@ -47,6 +48,24 @@ const styles = StyleSheet.create({
         fontSize:14,
         fontWeight:'400',
         lineHeight:20
+    },
+    ButtonBackground:{
+        width:'100%',
+        height:88,
+        position:'absolute',
+        bottom:0,
+        left:0,
+        right:0,
+        backgroundColor:'rgba(31, 41, 61, 1)',
+        padding:16
+    },
+    ButtonSelectSession:{
+        width:'100%',
+        height:'100%',
+        backgroundColor:'rgba(255, 128, 54, 1)',
+        borderRadius:6,
+        justifyContent:'center',
+        alignItems:'center'
     }
 })
 export default styles

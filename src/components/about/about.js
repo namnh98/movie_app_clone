@@ -2,11 +2,12 @@ import { Text, View, Image } from "react-native";
 import React from "react";
 import styles from "./aboutStyle";
 import SwitchBar from "../TopBar/SwitchBar";
+import MoviesType from "./MoviesType";
+import Button from "../Button/Button";
 
 const about = () => {
   return (
     <View style={styles.container}>
-      <SwitchBar />
       <View style={styles.boxImage}>
         <Image
           style={styles.ImageStyle}
@@ -29,11 +30,18 @@ const about = () => {
           political figures in Gotham, Batman is forced to investigate the
           city's hidden corruption and question his family's involvement.
         </Text>
-        <Text></Text>
+        <MoviesType />
       </View>
-      <View></View>
+      <View style={styles.ButtonBackground}>
+        <Button
+          TypeTagChild={'Text'}
+          content={'Select session'}
+          style={styles.ButtonSelectSession}
+          ContentStyle={styles.fontStyle}/>
+      </View>
     </View>
   );
 };
 
 export default about;
+ 

@@ -38,11 +38,11 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     ButtonOpacityLight:{
-        borderBottomWidth:4,
+        borderBottomWidth:2,
         borderBottomColor:'#FF8036',
     },
     ButtonOpacityDark:{
-        borderBottomWidth:4,
+        borderBottomWidth:2,
         borderBottomColor:'#637394',
     },
     fontBtn:{
