@@ -1,7 +1,6 @@
 import { Text, View, Image } from "react-native";
 import React from "react";
 import styles from "./aboutStyle";
-import SwitchBar from "../TopBar/SwitchBar";
 import MoviesType from "./MoviesType";
 import Button from "../Button/Button";
 

@@ -5,13 +5,16 @@ import HomeBar from '../../components/TopBar/HomeBar';
 import Button from '../../components/Button/Button';
 import CardCar from '../../components/Card/CardCar';
 import { MovieData, MovieData2 } from '../../constants/MovieData';
-
+import { useNavigation } from '@react-navigation/native';
+import { SCREEN_NAME } from '../../constants/screenNames';
 const HomeScreen = () => {
 
+  const navigation = useNavigation()
   const renderItemMovies = ({ item, index }) => {
     return <CardCar
       data={item}
-      container2={[index % 2 === 0 ? { marginRight: '27%' } : {}, { marginBottom: '20%' }]} />
+      container2={[index % 2 === 0 ? { marginRight: '27%' } : {}, { marginBottom: '20%' }]}
+      onPress={() => navigation.navigate(SCREEN_NAME.DETAIL)}/>
   }
   React.useEffect(() => {
 

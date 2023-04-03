@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SCREEN_NAME } from '../constants/screenNames';
 import Home from '../screens/home';
 import Detail from '../screens/detail';
+import about from '../components/about/about';
+import Sessions from '../components/about/Sessions';
 
 const MainStack = createNativeStackNavigator();
 

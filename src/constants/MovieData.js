@@ -177,30 +177,30 @@ export const MovieDetails = {
 
 export const CalenderData = [
   {
-    key: "iii",
+    key: 1,
   },
   {
-    key: "iii",
+    key: 2,
   },
   {
-    key: "iii",
+    key: 3,
   },
   {
-    key: "iii",
+    key: 4,
   },
   {
-    key: "iii",
+    key: 5,
   },
   {
-    key: "iii",
+    key: 6,
   },
   {
-    key: "iii",
+    key: 7,
   },
   {
-    key: "iii",
+    key: 8,
   },
   {
-    key: "iii",
+    key: 9,
   },
 ];

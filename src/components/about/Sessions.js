@@ -9,14 +9,13 @@ import {
 } from "react-native";
 import React from "react";
 import styles from "./SesssionStyle";
-import SwitchBar from "../TopBar/SwitchBar";
 import { CalenderData } from "../../constants/MovieData";
 import ContentItem from "./ContentItem";
 
 const Sessions = () => {
   const [isEnabled, setisEnabled] = React.useState(false);
   const renderItemFlatList = ({ item, id }) => {
-    return <ContentItem key={id} />;
+    return <ContentItem/>;
   };
   return (
     <View style={styles.container}>
