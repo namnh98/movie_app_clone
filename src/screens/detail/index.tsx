@@ -4,7 +4,7 @@ import styles from './styles';
 
 interface DetailProps {}
 
-const Detail: FC<DetailProps> = () => {
+const DetailScreen: FC<DetailProps> = () => {
   return (
     <View style={styles.container}>
       <Text>Detail</Text>
@@ -12,4 +12,4 @@ const Detail: FC<DetailProps> = () => {
   );
 };
 
-export default Detail;
+export default DetailScreen;

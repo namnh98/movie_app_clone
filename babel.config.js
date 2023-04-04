@@ -11,7 +11,12 @@ module.exports = {
           '@components': ['./src/components'],
           '@constants': ['./src/constants'],
           '@routes': ['./src/routes'],
-          '@screens': ['./src/screens']
+          '@screens': ['./src/screens'],
+          '@helpers': ['./src/helpers'],
+          '@i18n': ['./src/i18n'],
+          '@redux-app': ['./src/redux'],
+          '@services': ['./src/services'],
+          '@utils': ['./src/utils']
         }
       }
     ]

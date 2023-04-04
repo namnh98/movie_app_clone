@@ -1,4 +1,5 @@
 {
+  "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
@@ -8,12 +9,18 @@
     "noEmit": true,
     "allowJs": true,
     "baseUrl": ".",
+    "strict": true,
     "paths": {
-      "@assets/*":["./src/assets/*"],
-      "@components/*":["./src/components/*"],
-      "@constants/*":["./src/constants/*"],
-      "@routes/*":["./src/routes/*"],
-      "@screens/*":["./src/screens/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@screens/*": ["./src/screens/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@i18n/*": ["./src/i18n/*"],
+      "@redux-app/*": ["./src/redux/*"],
+      "@services/*": ["./src/services/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
   "exclude": ["node_modules", "**/node_modules/*"]
