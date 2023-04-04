@@ -1,16 +1,27 @@
-import { View, TouchableOpacity, ViewStyle, TextStyle, Text } from 'react-native';
+import { View, TouchableOpacity, ViewStyle, TextStyle, Text, Insets } from 'react-native';
 import React from 'react';
 
 interface ButtonProps {
-  content?: any;
+  content: any;
   contentStyle?: ViewStyle | TextStyle;
   onPressButton?: () => void;
+  buttonStyle?: ViewStyle;
+  activeOpacity?: number;
+  hitSlop?: any;
 }
 
 const AppButton = (props: ButtonProps) => {
-  const { content, contentStyle, onPressButton, ...rest } = props;
+  const {
+    content,
+    contentStyle = {},
+    onPressButton,
+    buttonStyle,
+    activeOpacity,
+    hitSlop = 2,
+    ...rest
+  } = props;
 
-  const renderChildren = (content, style) => {
+  const renderChildren = (content: any, style: ViewStyle | TextStyle) => {
     if (!content) {
       return null;
     }
@@ -33,7 +44,12 @@ const AppButton = (props: ButtonProps) => {
   };
 
   return (
-    <TouchableOpacity onPress={onPressButton} {...rest}>
+    <TouchableOpacity
+      onPress={onPressButton}
+      style={buttonStyle}
+      activeOpacity={activeOpacity}
+      hitSlop={hitSlop}
+      {...rest}>
       {renderChildren(content, contentStyle)}
     </TouchableOpacity>
   );
