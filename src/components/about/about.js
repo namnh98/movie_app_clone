@@ -3,8 +3,11 @@ import React from "react";
 import styles from "./aboutStyle";
 import MoviesType from "./MoviesType";
 import Button from "../Button/Button";
+import { useNavigation } from "@react-navigation/native";
+import { SCREEN_NAME } from "../../constants/screenNames";
 
 const about = () => {
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <View style={styles.boxImage}>
@@ -36,7 +39,8 @@ const about = () => {
           TypeTagChild={'Text'}
           content={'Select session'}
           style={styles.ButtonSelectSession}
-          ContentStyle={styles.fontStyle}/>
+          ContentStyle={styles.fontStyle}
+          onPress={() => navigation.navigate(SCREEN_NAME.SELECT_SEATS)}/>
       </View>
     </View>
   );

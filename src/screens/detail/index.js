@@ -6,7 +6,6 @@ import SwitchBar from '../../components/TopBar/SwitchBar';
 const DetailScreen = () => {
   return (
     <SwitchBar />
-    
   );
 };
 

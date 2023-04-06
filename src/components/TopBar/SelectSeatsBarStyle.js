@@ -5,11 +5,12 @@ const styles = StyleSheet.create({
         width:'100%',
         height:160,
         backgroundColor:'rgba(31, 41, 61, 1)',
-        justifyContent:'center',
+        justifyContent:'flex-start',
         alignItems:'center',
         paddingHorizontal:'6%'
     },
     TopBarContent:{
+        marginTop:'8%',
         flexDirection:'row',
         width:'100%',
         justifyContent:'space-between',

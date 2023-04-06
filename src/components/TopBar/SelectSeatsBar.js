@@ -2,15 +2,18 @@ import { Text, View,Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import styles from './SelectSeatsBarStyle'
 import Button from '../Button/Button'
+import { useNavigation } from '@react-navigation/native'
+
 
 const SelectSeatsBar = () => {
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <View style={styles.TopBarContent}>
         <Button
           TypeTagChild={'icon'}
           PatchImage={require('../../assets/img/icons/BackArrow.png')}
-          />
+          onPress={() => navigation.goBack()}/>
         <View style={styles.TextBox}>
           <Text style={styles.Title}>Eurasia Cinema7</Text>
           <Text style={styles.SubTitle}>The Batman</Text>
