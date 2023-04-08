@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
 import React from "react";
 import styles from "./MoviesTypeStyle";
-import { MovieDetails } from "../../constants/MovieData";
 
-const MoviesType = () => {
+const MoviesType = (props) => {
+  const {obj} = props
   const RenderBoxIcon = (key, value) => {
     return (
       <View style={styles.line}>
@@ -23,7 +23,7 @@ const MoviesType = () => {
     );
   };
   const RenderChilds = () => {
-    const MovieDetailstoArr = Object.entries(MovieDetails);
+    const MovieDetailstoArr = Object.entries(obj);
     const ReactFrags = MovieDetailstoArr.map(([key, value]) => {
       return key === "Certificate"
         ? RenderBoxIcon(key, value)

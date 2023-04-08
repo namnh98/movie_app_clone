@@ -3,5 +3,6 @@ export const SCREEN_NAME = {
     DETAIL:'Detail',
     ABOUT:'about',
     SESSIONS:'Sessions',
-    SELECT_SEATS:'SelectSeat'
+    SELECT_SEATS:'SelectSeat',
+    PAY:'Pay',
 }

@@ -5,6 +5,7 @@ import MoviesType from "./MoviesType";
 import Button from "../Button/Button";
 import { useNavigation } from "@react-navigation/native";
 import { SCREEN_NAME } from "../../constants/screenNames";
+import { MovieDetails } from "../../constants/MovieData";
 
 const about = () => {
   const navigation = useNavigation()
@@ -32,7 +33,7 @@ const about = () => {
           political figures in Gotham, Batman is forced to investigate the
           city's hidden corruption and question his family's involvement.
         </Text>
-        <MoviesType />
+        <MoviesType obj={MovieDetails}/>
       </View>
       <View style={styles.ButtonBackground}>
         <Button
