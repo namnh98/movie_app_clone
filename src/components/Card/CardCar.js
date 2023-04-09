@@ -1,21 +1,16 @@
-import { Text, TouchableOpacity, View ,Image, ImageBackground} from 'react-native'
-import React from 'react'
-import styles from './CardCarStyle'
+import { Text, TouchableOpacity, View, Image, ImageBackground } from 'react-native';
+import React from 'react';
+import styles from './CardCarStyle';
 
-const CardCar = (props) => {
-  const {container2,...reset} = props
+const CardCar = props => {
+  const { container2, data, ...reset } = props;
   return (
-    <TouchableOpacity style={[styles.container,container2]} {...reset}>
-      <Image
-        source={require('../../assets/img/Movie/Morbius.jpg')}
-        style={styles.ImageMovie}/>
-        <View style={styles.boxContent}>
-            <Text style={styles.title_text}>Spider-Man: No Way Home</Text>
-            <Text style={styles.subTitle_text}>Action</Text>
-        </View>
+    <TouchableOpacity style={[styles.container, container2]} {...reset}>
+      <Image source={data.image} style={{ width: 164, height: 230, marginBottom: 8 }} />
+      <Text style={styles.title_text}>{data.name}</Text>
+      <Text style={styles.subTitle_text}>{data.type}</Text>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
-export default CardCar
-
+export default CardCar;
