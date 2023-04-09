@@ -69,3 +69,4 @@ install-state.gz
 
 .yarn/install-state.gz
 yarn.lock
+__tests__
