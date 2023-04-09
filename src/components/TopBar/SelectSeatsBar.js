@@ -51,7 +51,7 @@ const SelectSeatsBar = (props) => {
         )}
         <Button
           TypeTagChild={"icon"}
-          PatchImage={require("../../assets/img/icons/Zoom.png")}
+          PatchImage={mode === "date" ? require("../../assets/img/icons/Zoom.png") : require(" ")}
         />
       </View>
       {mode === "date" ? renderDate() : <View />}
