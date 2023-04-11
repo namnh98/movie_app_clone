@@ -1,47 +1,51 @@
-import {Text, View,Image, TextInput } from 'react-native'
-import React from 'react'
-import styles from './PayStyle'
-import SelectSeatsBar from '../../components/TopBar/SelectSeatsBar'
-import MoviesType from '../../components/about/MoviesType'
-import Button from '../../components/Button/Button'
+import { Text, View, Image, TextInput } from "react-native";
+import React from "react";
+import styles from "./PayStyle";
+import SelectSeatsBar from "../../components/TopBar/SelectSeatsBar";
+import MoviesType from "../../components/about/MoviesType";
+import Button from "../../components/Button/Button";
 
-const payList={
-  Cinema: 'Eurasia Cinema7',
-  Date: '6 April 2022, 14:40',
-  Hall: '6th',
-  Seats:'7 row (7, 8)'
+const payList = {
+  Cinema: "Eurasia Cinema7",
+  Date: "6 April 2022, 14:40",
+  Hall: "6th",
+  Seats: "7 row (7, 8)",
+};
+const bills={
+  '1 x Adult':'2200 ₸',
+  '1 x Child':'2200 ₸',
+  '2 total':'3200 ₸',
 }
 const Pay = () => {
-  const [number,onChangeNumber] = React.useState('')
+  const [number, onChangeNumber] = React.useState("");
   const RenderBill = () => {
-
-  }
+    return <MoviesType obj={bills}/>
+  };
   return (
     <View style={styles.container}>
-      <SelectSeatsBar
-      mode={'none_date'}/>
-        <View style={styles.content}>
-          <Text style={styles.Title}>The Batman</Text>
-          <MoviesType obj={payList}/>
-          <View style={styles.line}/>
-          {RenderBill()}
-          <TextInput
+      <SelectSeatsBar mode={"none_date"} />
+      <View style={styles.content}>
+        <Text style={styles.Title}>The Batman</Text>
+        <MoviesType obj={payList} />
+        <View style={styles.line} />
+        {RenderBill()}
+        <TextInput
           style={styles.input}
           onChangeText={onChangeNumber}
           value={number}
           placeholder="Phone number"
-          placeholderTextColor={'#637394'}
-          keyboardType="numeric"/>
-          <Button
-          TypeTagChild={'Text'}
-          content={'Continue'}
+          placeholderTextColor={"#637394"}
+          keyboardType="numeric"
+        />
+        <Button
+          TypeTagChild={"Text"}
+          content={"Continue"}
           style={styles.Button}
-          ContentStyle={styles.Title}/>
-        </View>
-
-
+          ContentStyle={styles.Title}
+        />
+      </View>
     </View>
-  )
-}
+  );
+};
 
-export default Pay
+export default Pay;

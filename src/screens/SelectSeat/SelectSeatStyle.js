@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignSelf:'center',
         justifyContent:'space-around',
-        marginTop:'4%'
+        marginTop:'4%',
+        paddingVertical:'4%'
     },
     ListIcon:{
         width:'100%',
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
         justifyContent:'space-between',
         flexWrap:'wrap',
         paddingHorizontal:32,
-        marginTop:'30%'
+        paddingVertical:'8%',
     },
     paddingSeat:{
         paddingHorizontal:4,
@@ -33,6 +34,14 @@ const styles = StyleSheet.create({
         alignSelf:'center',
         borderRadius:12,
         marginTop:'30%'
+    },
+    btnSeats:{
+        width:40,
+        height:40,
+        backgroundColor:'#253554',
+        borderRadius:8,
+        alignItems:'center',
+        justifyContent:'center',
     }
 })
 export default styles

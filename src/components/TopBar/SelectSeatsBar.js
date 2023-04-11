@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 import { useNavigation } from "@react-navigation/native";
 
 const SelectSeatsBar = (props) => {
-  const { mode = "date", content = "Pay for tickets" } = props;
+  const { mode = "date", content = "Pay for tickets" ,ZoomPress} = props;
   const navigation = useNavigation();
 
   const renderDate = () => {
@@ -51,7 +51,8 @@ const SelectSeatsBar = (props) => {
         )}
         <Button
           TypeTagChild={"icon"}
-          PatchImage={mode === "date" ? require("../../assets/img/icons/Zoom.png") : require(" ")}
+          PatchImage={mode === "date" ? require("../../assets/img/icons/Zoom.png") : ''}
+          onPress={ZoomPress}
         />
       </View>
       {mode === "date" ? renderDate() : <View />}
