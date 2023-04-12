@@ -24,12 +24,19 @@ const Pay = () => {
   return (
     <View style={styles.container}>
       <SelectSeatsBar mode={"none_date"} />
-      <View style={styles.content}>
+      <View style={styles.content1}>
         <Text style={styles.Title}>The Batman</Text>
-        <MoviesType obj={payList} />
+        <MoviesType obj={payList}/>
         <View style={styles.line} />
         {RenderBill()}
-        <TextInput
+      </View>
+      <View style={styles.backgroundLine}>
+        <Image
+          source={require('../../assets/img/line/LineBiill.png')}
+          style={{width:'100%'}}/>
+      </View>
+      <View style={styles.content2}>
+      <TextInput
           style={styles.input}
           onChangeText={onChangeNumber}
           value={number}

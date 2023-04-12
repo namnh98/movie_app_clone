@@ -6,16 +6,25 @@ const styles = StyleSheet.create({
         flex:1,
         backgroundColor:'#111620',
     },
-    content:{
-        backgroundColor:'rgba(31, 41, 61, 1)',
-        padding:16,
-        borderBottomRightRadius:14,
-        borderBottomLeftRadius:14,
+    content1:{
+        backgroundColor: "#1F293D",
+        paddingHorizontal:'4%',
+    },
+    content2:{
+        backgroundColor: "#1F293D",
+        paddingHorizontal:'4%',
+        paddingVertical:'4%',
+        borderBottomLeftRadius:8,
+        borderBottomRightRadius:8,
     },
     Title: {
         color: "white",
         fontWeight: 700,
         fontSize: 20,
+    },
+    backgroundLine:{
+        backgroundColor: "#1F293D",
+        zIndex:1
     },
     line:{
         width:'100%',
@@ -35,14 +44,9 @@ const styles = StyleSheet.create({
         width:'100%',
         backgroundColor:'rgba(255, 128, 54, 1)',
         borderRadius:6,
+        paddingVertical:17,
         justifyContent:'center',
-        alignItems:'center',
-        paddingVertical:18
-    },
-    img:{
-        position:'absolute',
-        left:0,
-        right:0,
+        alignItems:'center'
     }
 })
 export default styles
