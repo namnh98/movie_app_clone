@@ -20,20 +20,12 @@ const styles = StyleSheet.create({
         justifyContent:'space-between',
         flexWrap:'wrap',
         paddingHorizontal:32,
-        paddingVertical:'8%',
+        paddingTop:'8%',
+        paddingBottom:'28%',
     },
     paddingSeat:{
         paddingHorizontal:4,
         paddingVertical:4,
-    },
-    buyBtn:{
-        width:343,
-        paddingHorizontal:82,
-        paddingVertical:17,
-        backgroundColor:'#FF8036',
-        alignSelf:'center',
-        borderRadius:12,
-        marginTop:'30%'
     },
     btnSeats:{
         width:40,
@@ -42,6 +34,23 @@ const styles = StyleSheet.create({
         borderRadius:8,
         alignItems:'center',
         justifyContent:'center',
+    },
+    buyBtn:{
+        position:'absolute',
+        left:'4%',
+        right:'4%',
+        bottom:'4%',
+        paddingVertical:17,
+        backgroundColor:'#FF8036',
+        borderRadius:12,
+        marginTop:'30%',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    fontbtn:{
+        color: "white",
+        fontWeight: 700,
+        fontSize: 20,
     }
 })
 export default styles

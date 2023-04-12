@@ -9,8 +9,6 @@ const Button = (props) => {
     PatchImage,
     ImageStyle,
     ContainerStyle,
-    Selected = false,
-    SelectedStyle,
     ...reset
   } = props;
 
@@ -27,7 +25,7 @@ const Button = (props) => {
   return (
     <TouchableOpacity
       hitSlop={2}
-      style={[ContainerStyle,Selected ? {backgroundColor:'rgba(255, 128, 54, 1)'} : {}]}
+      style={[ContainerStyle]}
       {...reset}
     >
       {Renderchild()}

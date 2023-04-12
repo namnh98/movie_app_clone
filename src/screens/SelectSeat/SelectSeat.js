@@ -7,14 +7,13 @@ import StausIcon from "../../components/TagIcon/StausIcon";
 import Button from "../../components/Button/Button";
 import { useNavigation } from "@react-navigation/native";
 import { SCREEN_NAME } from "../../constants/screenNames";
-import { check } from "prettier";
 
 const SelectSeat = () => {
   const navigation = useNavigation();
   const [isZoom, setisZoom] = React.useState(false);
   const [SelectedSeats,setSelectedSeats] = React.useState([]);
   let totalSeats = [];
-  for (let i = 0; i < 154; i++) {
+  for (let i = 0; i < 100; i++) {
     totalSeats.push({
       id:`seat${i+1}`,
       lable:`${i+1}`
@@ -94,11 +93,12 @@ const SelectSeat = () => {
         />
         {isZoom !== true ? renderIcon() : renderSeatsBtn()}
       </ScrollView>
-      {/* <Button
-        content={'Buy 2 tickets • 3200 ₸'}
+      <Button
+        content={'Buy tickets'}
+        ContentStyle={styles.fontbtn}
         TypeTagChild={'Text'}
         style={styles.buyBtn}
-        onPress={() => navigation.navigate(SCREEN_NAME.PAY)}/> */}
+        onPress={() => navigation.navigate(SCREEN_NAME.PAY)}/>
     </View>
   );
 };
