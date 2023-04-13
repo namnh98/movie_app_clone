@@ -1,42 +1,43 @@
 import { Text, View, Image, TextInput } from "react-native";
 import React from "react";
 import styles from "./PayStyle";
-import SelectSeatsBar from "../../components/TopBar/SelectSeatsBar";
 import MoviesType from "../../components/about/MoviesType";
 import Button from "../../components/Button/Button";
-
+import Ticket from "../../components/ticket/Ticket";
+import SelectSeatsBar from "../../components/TopBar/SelectSeatsBar";
+import { Modal } from "react-native";
+import YourTicket from "../../components/Modals/YourTicket";
 const payList = {
   Cinema: "Eurasia Cinema7",
   Date: "6 April 2022, 14:40",
   Hall: "6th",
   Seats: "7 row (7, 8)",
 };
-const bills={
-  '1 x Adult':'2200 ₸',
-  '1 x Child':'2200 ₸',
-  '2 total':'3200 ₸',
-}
+const bills = {
+  "1 x Adult": "2200 ₸",
+  "1 x Child": "2200 ₸",
+  "2 total": "3200 ₸",
+};
 const Pay = () => {
   const [number, onChangeNumber] = React.useState("");
+  const [modalVisible, setModalVisible] = React.useState(false);
   const RenderBill = () => {
-    return <MoviesType obj={bills}/>
+    return <MoviesType obj={bills} />;
   };
-  return (
-    <View style={styles.container}>
-      <SelectSeatsBar mode={"none_date"} />
-      <View style={styles.content1}>
+  const topContent = () => {
+    return (
+      <React.Fragment>
         <Text style={styles.Title}>The Batman</Text>
-        <MoviesType obj={payList}/>
+        <MoviesType obj={payList} />
         <View style={styles.line} />
         {RenderBill()}
-      </View>
-      <View style={styles.backgroundLine}>
-        <Image
-          source={require('../../assets/img/line/LineBiill.png')}
-          style={{width:'100%'}}/>
-      </View>
-      <View style={styles.content2}>
-      <TextInput
+      </React.Fragment>
+    );
+  };
+  const bottomContent = () => {
+    return (
+      <React.Fragment>
+        <TextInput
           style={styles.input}
           onChangeText={onChangeNumber}
           value={number}
@@ -49,9 +50,26 @@ const Pay = () => {
           content={"Continue"}
           style={styles.Button}
           ContentStyle={styles.Title}
+          onPress={() => setModalVisible(true)}
         />
-      </View>
-    </View>
+      </React.Fragment>
+    );
+  };
+  return (
+    <React.Fragment>
+      <Modal 
+        animationType="slide"
+        transparent={false}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(!modalVisible)}>
+        <YourTicket/>
+      </Modal>
+      <Ticket
+        renderTopBar={<SelectSeatsBar mode={"none_date"} />}
+        renderContentTop={topContent()}
+        renderContentBottom={bottomContent()}
+      />
+    </React.Fragment>
   );
 };
 

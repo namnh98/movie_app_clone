@@ -76,7 +76,7 @@ const SelectSeat = () => {
   };
   return (
     <View style={styles.container}>
-      <SelectSeatsBar ZoomPress={() => setisZoom(!isZoom)} />
+      <SelectSeatsBar BtnRightOnPress={() => setisZoom(!isZoom)} />
       <View style={styles.TagList}>
         <StausIcon status={"Available"} text={"Available"} />
         <StausIcon status={"Occupied"} text={"Occupied"} />
