@@ -10,5 +10,7 @@ import CheckBox from './src/components/CheckBox/CheckBox';
 import Icons from './src/components/TagIcon/Icons';
 import Pay from './src/screens/Pay/Pay';
 import Details from './src/screens/detail/index'
+import CreditCards from './src/components/CreditCards/CreditCards';
+import PayMentCard from './src/components/PayMentCard/PayMentCard';
 
 AppRegistry.registerComponent(appName, () => App);

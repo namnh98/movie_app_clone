@@ -23,7 +23,8 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <HomeBar />
+      <HomeBar 
+        LoginOnpress={() => navigation.navigate(SCREEN_NAME.PROFILE)}/>
       <View style={styles.content}>
         <View style={styles.Header}>
           <Text

@@ -7,7 +7,7 @@ import Home from '../screens/home';
 import Detail from '../screens/detail';
 import SelectSeat from '../screens/SelectSeat/SelectSeat';
 import Pay from '../screens/Pay/Pay';
-
+import Profile from '../screens/Profile/Proflie'
 const MainStack = createNativeStackNavigator();
 
 const MainRoutes = () => {
@@ -15,6 +15,7 @@ const MainRoutes = () => {
     <NavigationContainer>
       <MainStack.Navigator screenOptions={{ headerShown: false }}>
         <MainStack.Screen name={SCREEN_NAME.HOME} component={Home} />
+        <MainStack.Screen name={SCREEN_NAME.PROFILE} component={Profile} />
         <MainStack.Screen name={SCREEN_NAME.DETAIL} component={Detail} />
         <MainStack.Screen name={SCREEN_NAME.SELECT_SEATS} component={SelectSeat} />
         <MainStack.Screen name={SCREEN_NAME.PAY} component={Pay} />

@@ -5,7 +5,8 @@ import styles from './HomeBarStyles'
 
 const HomeBar = (props) => {
   const {
-    UserMode = 'non-User'
+    UserMode = 'non-User',
+    LoginOnpress
   } = props;
 
   return (
@@ -31,7 +32,7 @@ const HomeBar = (props) => {
       </View>
       <View 
         style={styles.flex_item1}>
-        <TouchableOpacity style={styles.flex_item_btn}>
+        <TouchableOpacity onPress={LoginOnpress} style={styles.flex_item_btn}>
           <Text style={styles.flex_item_font}>{UserMode === 'User' ? 'Profile' : 'Login'}</Text>
         </TouchableOpacity>
       </View>

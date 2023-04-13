@@ -5,4 +5,5 @@ export const SCREEN_NAME = {
     SESSIONS:'Sessions',
     SELECT_SEATS:'SelectSeat',
     PAY:'Pay',
+    PROFILE:'PROFILE'
 }
