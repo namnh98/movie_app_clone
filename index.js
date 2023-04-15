@@ -12,5 +12,7 @@ import Pay from './src/screens/Pay/Pay';
 import Details from './src/screens/detail/index'
 import CreditCards from './src/components/CreditCards/CreditCards';
 import PayMentCard from './src/components/PayMentCard/PayMentCard';
+import ModalViewCS from './src/components/Modals/ModalViewCS';
+
 
 AppRegistry.registerComponent(appName, () => App);

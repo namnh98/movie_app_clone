@@ -9,6 +9,8 @@ const Button = (props) => {
     PatchImage,
     ImageStyle,
     ContainerStyle,
+    Renderchilds,
+    alotContet = false,
     ...reset
   } = props;
 
@@ -28,7 +30,7 @@ const Button = (props) => {
       style={[ContainerStyle]}
       {...reset}
     >
-      {Renderchild()}
+      {alotContet ? Renderchilds : Renderchild()}
     </TouchableOpacity>
   );
 };

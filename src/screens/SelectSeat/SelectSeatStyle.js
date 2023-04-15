@@ -51,6 +51,28 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: 700,
         fontSize: 20,
+    },
+    Title: {
+        color: "rgba(255, 255, 255, 1)",
+        fontWeight: 700,
+        fontSize: 16,
+    },
+    subText:{
+        color:'rgba(99, 115, 148, 1)'
+    },
+    boxTextBtn:{
+        borderBottomWidth:1,
+        borderBottomColor:'rgba(109, 158, 255, 0.4)',
+        width:'100%',
+        justifyContent:'space-between',
+        flexDirection:'row',
+        paddingVertical:'4%'
+    },
+    ModalBtns:{
+        flex:1,
+        backgroundColor:'rgba(26, 34, 50, 0.4)',
+        justifyContent:'flex-end',
+        padding:'4%',
     }
 })
 export default styles
