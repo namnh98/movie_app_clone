@@ -1,6 +1,6 @@
-import { Text, View } from "react-native";
-import React from "react";
-import styles from "./ModalViewCSStyle";
+import { Text, View } from 'react-native';
+import React from 'react';
+import styles from './ModalViewCSStyle';
 
 const ModalViewCS = (props) => {
   const {
@@ -8,8 +8,8 @@ const ModalViewCS = (props) => {
     SubTitle = true,
     renderContent,
     containerText2,
-    titleContent = "",
-    SubContent = "",
+    titleContent = '',
+    SubContent = '',
   } = props;
 
   const renderTitle = () => {

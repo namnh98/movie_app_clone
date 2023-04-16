@@ -1,6 +1,6 @@
-import { Text, View } from 'react-native'
-import React from 'react'
-import styles from './ContentItemStyle'
+import { Text, View } from 'react-native';
+import React from 'react';
+import styles from './ContentItemStyle';
 
 const ContentItem = () => {
   return (
@@ -12,14 +12,14 @@ const ContentItem = () => {
       <View style={styles.TagContent}>
         <Text style={styles.Title}>Kinopark 8 IMAX Saryarka</Text>
         <View style={styles.SpanList}>
-            <Text style={styles.SpanText}>3500 ₸</Text>
-            <Text style={styles.SpanText}>1500 ₸</Text>
-            <Text style={styles.SpanText}>2500 ₸</Text>
-            <Text style={styles.SpanText}>4000 ₸</Text>
+          <Text style={styles.SpanText}>3500 ₸</Text>
+          <Text style={styles.SpanText}>1500 ₸</Text>
+          <Text style={styles.SpanText}>2500 ₸</Text>
+          <Text style={styles.SpanText}>4000 ₸</Text>
         </View>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default ContentItem
+export default ContentItem;

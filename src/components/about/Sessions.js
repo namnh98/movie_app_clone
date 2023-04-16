@@ -6,33 +6,35 @@ import {
   Switch,
   FlatList,
   ScrollView,
-} from "react-native";
-import React from "react";
-import styles from "./SesssionStyle";
-import { CalenderData } from "../../constants/MovieData";
-import ContentItem from "./ContentItem";
+} from 'react-native';
+import React from 'react';
+import styles from './SesssionStyle';
+import { CalenderData } from '../../constants/MovieData';
+import ContentItem from './ContentItem';
 
 const Sessions = () => {
   const [isEnabled, setisEnabled] = React.useState(false);
+
   const renderItemFlatList = ({ item, id }) => {
-    return <ContentItem/>;
+    return <ContentItem />;
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.ControlList}>
         <TouchableOpacity style={styles.ControlItem}>
-          <Image source={require("../../assets/img/icons/Calender.png")} />
+          <Image source={require('../../assets/img/icons/Calender.png')} />
           <Text style={styles.fontStyle}>April, 18</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.ControlItem}>
-          <Image source={require("../../assets/img/icons/Short.png")} />
+          <Image source={require('../../assets/img/icons/Short.png')} />
           <Text style={styles.fontStyle}>Time ↑</Text>
         </TouchableOpacity>
         <View style={styles.ControlItem}>
           <Switch
-            trackColor={{ false: "#253554", true: "#FF8036" }}
+            trackColor={{ false: '#253554', true: '#FF8036' }}
             value={isEnabled}
-            thumbColor={isEnabled ? "#FFFFFF" : "#637394"}
+            thumbColor={isEnabled ? '#FFFFFF' : '#637394'}
             onValueChange={() => setisEnabled(!isEnabled)}
             hitSlop={5}
             style={styles.SwitchBtn}
