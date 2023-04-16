@@ -10,5 +10,4 @@
 /ios/build
 
 /android/.gradle/
-/android/app/
 /android/*.properties
