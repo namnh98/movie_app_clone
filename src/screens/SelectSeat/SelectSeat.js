@@ -1,5 +1,5 @@
 import { Text, View, Image, ScrollView, Modal } from "react-native";
-import React from "react";
+import React , {useState} from "react";
 import styles from "./SelectSeatStyle";
 import SelectSeatsBar from "../../components/TopBar/SelectSeatsBar";
 import Icons from "../../components/TagIcon/Icons";
@@ -13,25 +13,30 @@ import { TouchableHighlight } from "react-native";
 
 const SelectSeat = () => {
   const navigation = useNavigation();
-  const [isZoom, setisZoom] = React.useState(false);
-  const [SelectedSeats, setSelectedSeats] = React.useState([]);
-  const [isModal,setisModal] = React.useState(false)
-  const [currSeat,setcurrSeat] = React.useState('')
-  const [isSubModal,setisSubModal] = React.useState(false)
+  const [isZoom, setisZoom] = useState(false);
+  const [SelectedSeats, setSelectedSeats] = useState([]);
+  const [isModal, setisModal] = useState(false);
+  const [currSeat, setcurrSeat] = useState({});
+  const [isSubModal, setisSubModal] = useState(false);
+  const [type,setType] = useState({
+    type: "Adult",
+    price: "2000"
+  })
+  console.log(SelectedSeats)
   const typeBoard = [
     {
-      type: 'Adult',
-      price: '2000'
+      type: "Adult",
+      price: "2000",
     },
     {
-      type: 'Child',
-      price: '1000'
+      type: "Child",
+      price: "1000",
     },
     {
-      type: 'Student',
-      price: '1500'
-    }
-  ]
+      type: "Student",
+      price: "1500",
+    },
+  ];
   let totalSeats = [];
   for (let i = 0; i < 100; i++) {
     totalSeats.push({
@@ -58,10 +63,10 @@ const SelectSeat = () => {
     });
     return rs;
   };
-  const removeElement = (e) => {
+  const removeElement = (SelectedSeats) => {
     let array = Array.from(SelectedSeats);
     let index = array.findIndex(
-      (Element) => JSON.stringify(Element) === JSON.stringify(e)
+      (Element) => JSON.stringify(Element) === JSON.stringify({...currSeat,...type}) || Element.id === currSeat.id
     );
     if (index !== -1) {
       array.splice(index, 1);
@@ -70,13 +75,14 @@ const SelectSeat = () => {
   };
 
   const onPressSeat = (e) => {
+    setcurrSeat(e)
     if (!isFound(e)) {
       setSelectedSeats(SelectedSeats.concat(e));
-    } else {
-      removeElement(e);
+      setisModal(!isModal);
+    }else{
+      setisSubModal(true)
     }
-    setisModal(!isModal)
-    setcurrSeat(e.id)
+    
   };
 
   const renderSeatsBtn = () => {
@@ -99,56 +105,71 @@ const SelectSeat = () => {
     return rs;
   };
   const renderModal = (seat) => {
-    return ( 
+    return (
       <ModalViewCS
-      titleContent={'Select ticket type'}
-      SubContent={seat}
-      renderContent={ModalContent()}/>
+        titleContent={"Select ticket type"}
+        SubContent={seat.id}
+        renderContent={ModalContent()}
+      />
+    );
+  };
+  const renderSubModal = () => {
+    return (
+      <ModalViewCS
+        titleContent={currSeat.id}
+        SubTitle={false}
+        renderContent={ 
+          <React.Fragment>
+            <Button
+              TypeTagChild={"Text"}
+              Renderchilds={BtnTexts('bao tri', 'bao tri')}
+              alotContet={true}
+            />
+            <Button
+              TypeTagChild={'Text'}
+              ContainerStyle={styles.removeSeatButton}
+              ContentStyle={styles.Title}
+              content={'Deselect this seat'}
+              onPress={() => {
+                removeElement(SelectedSeats)
+                setisSubModal(!isSubModal)
+                setisModal(false)
+              }}
+              />
+          </React.Fragment>  
+        }
+      />
     )
-  }
-  const renderSubModal = (e) => {
-      return (
-        <ModalViewCS
-          titleContent={currSeat}
-          SubTitle={false}
-          renderContent={() => {
-            return(
-              <Button
-                key={e.type}
-                TypeTagChild={'Text'}
-                Renderchilds={BtnTexts(e.type,e.price + '₸')}
-                alotContet={true}></Button>
-            )
-          }}
-        ></ModalViewCS>
-      )
   }
   const ModalContent = () => {
     return (
-      <View >
+      <View>
         {
-          typeBoard.map((e) => {
-            return <Button
-            key={e.type}
-            TypeTagChild={'Text'}
-            Renderchilds={BtnTexts(e.type,e.price + '₸')}
-            alotContet={true} 
-            onPress={()=>{
-              setisSubModal(!isSubModal)
-            }}/>
-          })
+        typeBoard.map((e) => {
+          return (
+            <Button
+              key={e.type}
+              TypeTagChild={"Text"}
+              Renderchilds={BtnTexts(e.type, e.price + "₸")}
+              alotContet={true}
+              onPress={() => {
+                
+              }}
+            />
+          );
+        })
         }
       </View>
-    )
-  }
-  const BtnTexts = (type,price) => {
+    );
+  };
+  const BtnTexts = (type, price) => {
     return (
       <View style={styles.boxTextBtn}>
         <Text style={styles.Title}>{type}</Text>
         <Text style={styles.subText}>{price}</Text>
       </View>
-    )
-  }
+    );
+  };
   return (
     <View style={styles.container}>
       <SelectSeatsBar BtnRightOnPress={() => setisZoom(!isZoom)} />
@@ -171,37 +192,28 @@ const SelectSeat = () => {
         style={styles.buyBtn}
         onPress={() => navigation.navigate(SCREEN_NAME.PAY)}
       />
-
       <Modal
-      animationType="slide"
-      transparent={true}
-      visible={isModal}
-      onRequestClose={() => {
-        setisModal(!isModal)
-      }}>
-        <TouchableOpacity 
-          style={styles.ModalBtns}
-          onPress={() => setisModal(!isModal)}>
-           <TouchableHighlight>
+        transparent={true}
+        animationType="slide"
+        visible={isModal}
+        onRequestClose={() => setisModal(!isModal)}>
+        <TouchableOpacity style={styles.ModalBtns} onPress={() => {setisModal(!isModal)}}>
+          <TouchableHighlight>
             {renderModal(currSeat)}
-           </TouchableHighlight>
+          </TouchableHighlight>
         </TouchableOpacity>
       </Modal>
 
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={isSubModal}
-        onRequestClose={() => {
-          setisSubModal(!isSubModal)
-        }}>
-          <TouchableOpacity 
-            style={styles.ModalBtns}
-            onPress={() => setisSubModal(!isSubModal)}>
-            <TouchableHighlight>
-              {renderSubModal()}
-            </TouchableHighlight>
-          </TouchableOpacity>
+      <Modal 
+          transparent={true}
+          animationType="slide"
+          visible={isSubModal}
+          onRequestClose={() => setisSubModal(!isSubModal)}>
+            <TouchableOpacity style={styles.ModalBtns} onPress={() => {setisSubModal(!isSubModal)}}>
+              <TouchableHighlight>
+                {renderSubModal(type)}
+              </TouchableHighlight>
+            </TouchableOpacity>
       </Modal>
     </View>
   );

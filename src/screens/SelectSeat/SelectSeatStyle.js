@@ -73,6 +73,16 @@ const styles = StyleSheet.create({
         backgroundColor:'rgba(26, 34, 50, 0.4)',
         justifyContent:'flex-end',
         padding:'4%',
+    },
+    removeSeatButton:{
+        width:'100%',
+        height:56,
+        borderRadius:8,
+        borderWidth:1,
+        borderColor:'rgba(109, 158, 255, 0.1)',
+        alignItems:'center',
+        justifyContent:'center',
+        marginTop:'18%'
     }
 })
 export default styles
