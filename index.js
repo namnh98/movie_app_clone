@@ -13,6 +13,7 @@ import Details from './src/screens/detail/index'
 import CreditCards from './src/components/CreditCards/CreditCards';
 import PayMentCard from './src/components/PayMentCard/PayMentCard';
 import ModalViewCS from './src/components/Modals/ModalViewCS';
+import ModalViewSelectSeat from './src/components/Modals/ModalViewSelectSeat';
 
 
 AppRegistry.registerComponent(appName, () => App);

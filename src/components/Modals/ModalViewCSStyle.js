@@ -2,11 +2,11 @@ import { StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
     container:{
-        height:248,
         width:'100%',
+        height:320,
         backgroundColor:'rgba(31, 41, 61, 1)',
         borderRadius:16,
-        padding:16,
+        padding:'4%'
     },
     containerText:{
         width:'100%',

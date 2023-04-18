@@ -1,0 +1,98 @@
+import React,{useState}from 'react'
+import { Text, View } from 'react-native'
+import styles from './ModalViewSelectSeatStyle'
+import ModalViewCS from './ModalViewCS'
+import Button from '../Button/Button'
+import { isFound } from '../../constants/common'
+const typeBoard = [
+    {
+      type: "Adult",
+      price: "2000",
+    },
+    {
+      type: "Child",
+      price: "1000",
+    },
+    {
+      type: "Student",
+      price: "1500",
+    },
+];
+
+const ModalViewSelectSeat = (props) => {
+    const {
+        CurrentSeat = null,
+        Currenttype = null,
+        DeSelectOnPress,
+        DoneOnPress,
+        arr = [],
+    } = props
+
+  const [currType,setcurrType] = useState({})
+    
+  const CheckCurrentType = (Type) => {
+    const rs = arr.find((e) => {
+        return e.type === Type.type
+    })
+    console.log(rs)
+    return rs
+  }
+  
+    // console.log(arr)
+    const RenderBtnTypes=()=>{
+        return(
+            <View>
+               <View>
+               {
+                typeBoard.map((e) => {
+                    
+                    return <Button
+                    key={e.type}
+                    alotContet={true}
+                    Renderchilds={RenderBtnBoxText(e.type,e.price)}
+                    ContainerStyle={[styles.Button,currType.type === e.type ? {backgroundColor:'rgba(252, 109, 25, 1)'}:{}]}
+                    onPress={() => {
+                        setcurrType(e)
+                        const index = arr.findIndex((obj) => {
+                            return obj.id === CurrentSeat
+                        })
+                        arr[index].type = e.type
+                        arr[index].price = e.price
+                    }}/>
+                })
+               }
+                </View>
+                <View style={styles.boxResultBtn}>
+                    <Button
+                        TypeTagChild={'Text'}
+                        content={'DeSelect'}
+                        ContainerStyle={[styles.btn,styles.btnDeSelect]}
+                        ContentStyle={styles.fontTitle}
+                        onPress={DeSelectOnPress}/>
+                    <Button
+                        TypeTagChild={'Text'}
+                        content={'Done'}
+                        ContainerStyle={[styles.btn,styles.btnDone]}
+                        ContentStyle={styles.fontTitle}
+                        onPress={DoneOnPress}/>
+                </View> 
+            </View>
+        )
+    }
+    const RenderBtnBoxText =(type,price) => {
+        return (
+            <View style={styles.BoxTypeBtn}>
+                <Text style={styles.fontTitle}>{type || ''}</Text>
+                <Text style={styles.fontSubTitle}>{price + ' ₸' || ''}</Text>
+            </View>
+        )
+    }
+  return (
+    <ModalViewCS
+    titleContent={'Select ticket type'}
+    SubContent={CurrentSeat || 'loi'}
+    renderContent={RenderBtnTypes()}/>
+  )
+}
+
+export default ModalViewSelectSeat

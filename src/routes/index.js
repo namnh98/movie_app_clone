@@ -8,6 +8,7 @@ import Detail from '../screens/detail';
 import SelectSeat from '../screens/SelectSeat/SelectSeat';
 import Pay from '../screens/Pay/Pay';
 import Profile from '../screens/Profile/Proflie'
+import { Provider } from 'react-redux';
 const MainStack = createNativeStackNavigator();
 
 const MainRoutes = () => {

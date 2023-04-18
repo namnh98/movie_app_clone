@@ -1,5 +1,5 @@
-import { Text, View, Image, TextInput } from "react-native";
 import React from "react";
+import { Text, View, Image, TextInput } from "react-native";
 import styles from "./PayStyle";
 import MoviesType from "../../components/about/MoviesType";
 import Button from "../../components/Button/Button";
