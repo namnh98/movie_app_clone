@@ -25,20 +25,17 @@ const ModalViewSelectSeat = (props) => {
         Currenttype = null,
         DeSelectOnPress,
         DoneOnPress,
-        arr = [],
+        ButtonTypesOnPress,
+        arr = {},
     } = props
 
-  const [currType,setcurrType] = useState({})
+    const CheckHaveKey = (type) => {
+        const rs = arr.find((e) => {
+            return e.type === type && e.id === CurrentSeat.id
+        })
+        return rs
+    }
     
-  const CheckCurrentType = (Type) => {
-    const rs = arr.find((e) => {
-        return e.type === Type.type
-    })
-    console.log(rs)
-    return rs
-  }
-  
-    // console.log(arr)
     const RenderBtnTypes=()=>{
         return(
             <View>
@@ -50,15 +47,8 @@ const ModalViewSelectSeat = (props) => {
                     key={e.type}
                     alotContet={true}
                     Renderchilds={RenderBtnBoxText(e.type,e.price)}
-                    ContainerStyle={[styles.Button,currType.type === e.type ? {backgroundColor:'rgba(252, 109, 25, 1)'}:{}]}
-                    onPress={() => {
-                        setcurrType(e)
-                        const index = arr.findIndex((obj) => {
-                            return obj.id === CurrentSeat
-                        })
-                        arr[index].type = e.type
-                        arr[index].price = e.price
-                    }}/>
+                    ContainerStyle={[styles.Button,CheckHaveKey(e.type) === e.type  ? {backgroundColor:'rgba(252, 109, 25, 1)'}:{}]}
+                    onPress={() => ButtonTypesOnPress(e)}/>
                 })
                }
                 </View>
@@ -90,7 +80,7 @@ const ModalViewSelectSeat = (props) => {
   return (
     <ModalViewCS
     titleContent={'Select ticket type'}
-    SubContent={CurrentSeat || 'loi'}
+    SubContent={CurrentSeat.id || 'loi'}
     renderContent={RenderBtnTypes()}/>
   )
 }

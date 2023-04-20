@@ -12,12 +12,17 @@ import { TouchableHighlight } from "react-native";
 import ModalViewSelectSeat from "../../components/Modals/ModalViewSelectSeat";
 import { isFound} from "../../constants/common";
 
+
+  
 const SelectSeat = () => {
   const navigation = useNavigation();
   const [SelectedSeats, setSelectedSeats] = useState([]); 
   const [isZoom, setisZoom] = useState(false);
   const [isModal,setisModal] = useState(false)  
   const [currSeat,setcurrSeat] = useState({})
+  const [currType,setcurrType] = useState({})
+  const [total,settotal] = useState({})
+
   console.log(SelectedSeats)
 
   let totalSeats = [];
@@ -55,9 +60,7 @@ const SelectSeat = () => {
   const onPressSeat = (e,i) => {
     setcurrSeat(e)
     setisModal(!isModal)
-    if(!isFound(e,SelectedSeats)){
-      setSelectedSeats(SelectedSeats.concat(e))
-    }
+    
   };
 
   const DeSelectEvent = (currSeat) => {
@@ -88,6 +91,21 @@ const SelectSeat = () => {
 
   const DoneEvent = () => {
     setisModal(false)
+    if(!isFound({...currSeat,...currType},SelectedSeats)){
+      setSelectedSeats(SelectedSeats.concat({...currSeat,...currType}))
+    }
+  }
+
+  const ButtonEvent = (e) => {
+    setcurrType(e)
+    if(isFound({...currSeat,...currType},SelectedSeats)){
+      const index = SelectedSeats.findIndex((obj) => {
+        return obj.id === currSeat.id
+      })
+        SelectedSeats[index].type = e.type
+        SelectedSeats[index].price =e.price
+    }
+    
   }
 
   return (
@@ -122,10 +140,11 @@ const SelectSeat = () => {
         onPress={() => setisModal(!isModal)}>
           <TouchableHighlight>
             <ModalViewSelectSeat
-              CurrentSeat={currSeat.id}
-              // Currenttype={currType}
+              Currenttype={currType}
+              CurrentSeat={currSeat}
               DeSelectOnPress={() => DeSelectEvent(currSeat)}
               arr={SelectedSeats}
+              ButtonTypesOnPress={ButtonEvent}
               DoneOnPress={() => DoneEvent()}/>
           </TouchableHighlight>
         </TouchableOpacity>
