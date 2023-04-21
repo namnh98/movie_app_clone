@@ -23,7 +23,7 @@ const SelectSeat = () => {
   const [currType,setcurrType] = useState({})
   const [total,settotal] = useState({})
 
-  console.log(SelectedSeats)
+  // console.log(SelectedSeats)
 
   let totalSeats = [];
   for (let i = 0; i < 100; i++) {
@@ -60,7 +60,6 @@ const SelectSeat = () => {
   const onPressSeat = (e,i) => {
     setcurrSeat(e)
     setisModal(!isModal)
-    console.log(e)
   };
 
   const DeSelectEvent = (currSeat) => {

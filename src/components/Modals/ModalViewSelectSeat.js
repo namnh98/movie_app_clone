@@ -26,13 +26,14 @@ const ModalViewSelectSeat = (props) => {
         DeSelectOnPress,
         DoneOnPress,
         ButtonTypesOnPress,
-        arr = {},
+        arr = [],
     } = props
 
     const CheckHaveKey = (type) => {
-        const rs = arr.find((e) => {
-            return e.type === type && e.id === CurrentSeat.id
+        const rs = arr.forEach((e) => {
+            return e.type === type && e.id === CurrentSeat.id ? {backgroundColor:'rgba(252, 109, 25, 1)'} : {}
         })
+        console.log(rs)
         return rs
     }
     
@@ -47,7 +48,7 @@ const ModalViewSelectSeat = (props) => {
                     key={e.type}
                     alotContet={true}
                     Renderchilds={RenderBtnBoxText(e.type,e.price)}
-                    ContainerStyle={[styles.Button,CheckHaveKey(e) === e.type ? {backgroundColor:'rgba(252, 109, 25, 1)'}:{}]}
+                    ContainerStyle={[styles.Button,CheckHaveKey(e)]}
                     onPress={() => ButtonTypesOnPress(e)}/>
                 })
                }
