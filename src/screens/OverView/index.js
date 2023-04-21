@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList } from 'react-native';
 import React from 'react';
-import styles from './styles';
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SCREEN_NAMES } from '../../constants/screenNames';
+import styles from './styles';
+
 const overview = props => {
   const { navigation } = props;
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>

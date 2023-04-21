@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import React from 'react';
-import styles from './styles';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SCREEN_NAMES } from '../../constants/screenNames';
+import styles from './styles';
 const pay = props => {
   const { navigation } = props;
   return (
@@ -56,7 +56,8 @@ const pay = props => {
         <TextInput
           style={styles.input}
           placeholder="Phone_number"
-          placeholderTextColor="rgba(99, 115, 148, 1)"></TextInput>
+          placeholderTextColor="rgba(99, 115, 148, 1)"
+        />
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate(SCREEN_NAMES.TICKET)}>

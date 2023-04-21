@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {},
@@ -7,7 +7,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: '#1F293D',
-    padding: 20
+    paddingHorizontal: 16,
+    paddingTop: StatusBar.currentHeight + 8,
+    paddingBottom: 16
   },
   image_logo_home: {
     width: 60,

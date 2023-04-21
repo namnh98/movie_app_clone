@@ -1,10 +1,13 @@
 import React from 'react';
-import MainRoutes from './src/routes'
+import { View } from 'react-native';
+import MainRoutes from './src/routes';
 
 const App = () => {
   return (
-    <MainRoutes/>
-  )
-}
+    <View style={{ flex: 1 }}>
+      <MainRoutes />
+    </View>
+  );
+};
 
-export default App
+export default App;

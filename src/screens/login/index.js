@@ -1,14 +1,15 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import React from 'react';
-import styles from './styles';
+import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SCREEN_NAMES } from '../../constants/screenNames';
+import styles from './styles';
 const login = props => {
   const { navigation } = props;
+
   return (
     <View style={styles.container}>
       <View style={styles.form_login}>
         <View style={styles.form_top}>
-          <Text style={styles.txt_login_1}>Login</Text>
+          <Text style={styles.txt_login_1}>{'Login'}</Text>
           <Text style={styles.txt_login_2}>Access to purchased tickets</Text>
         </View>
         <TextInput

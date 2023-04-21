@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import React from 'react';
-import styles from './styles';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SCREEN_NAMES } from '../../constants/screenNames';
+import styles from './styles';
 const profile = props => {
   const { navigation } = props;
+
   return (
     <View style={styles.container_pay}>
       <View style={styles.topbar}>
@@ -22,13 +23,13 @@ const profile = props => {
         <View style={styles.card}>
           <View style={styles.visa}>
             <Image source={require('../../assets/Visa.png')} style={styles.img_visa}></Image>
-            <Text style={styles.txt_visa}>4716 •••• •••• 5615</Text>
+            <Text style={styles.txt_visa}>{'4716 •••• •••• 5615'}</Text>
           </View>
           <Text style={styles.exp_txt}> 06/24</Text>
         </View>
 
         <TouchableOpacity style={styles.button_add}>
-          <Text style={styles.txt_add}>Add new card </Text>
+          <Text style={styles.txt_add}>{'Add new card '}</Text>
         </TouchableOpacity>
       </View>
 
@@ -36,9 +37,7 @@ const profile = props => {
         <Text style={styles.txt_scpay}> Payments history</Text>
 
         <View style={styles.payments}>
-          <Image
-            source={require('../../assets/ImageBatman.png')}
-            style={styles.img_payment}></Image>
+          <Image source={require('../../assets/ImageBatman.png')} style={styles.img_payment} />
 
           <View style={styles.title}>
             <Text style={styles.txt_title_1}>The Batman </Text>
