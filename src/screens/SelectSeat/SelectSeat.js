@@ -60,7 +60,7 @@ const SelectSeat = () => {
   const onPressSeat = (e,i) => {
     setcurrSeat(e)
     setisModal(!isModal)
-    
+    console.log(e)
   };
 
   const DeSelectEvent = (currSeat) => {
@@ -128,7 +128,9 @@ const SelectSeat = () => {
         ContentStyle={styles.fontbtn}
         TypeTagChild={"Text"}
         style={styles.buyBtn}
-        onPress={() => navigation.navigate(SCREEN_NAME.PAY,SelectedSeats)}
+        onPress={() => navigation.navigate(SCREEN_NAME.PAY,{
+          data: SelectedSeats
+        })}
       />
       <Modal
       transparent={true}

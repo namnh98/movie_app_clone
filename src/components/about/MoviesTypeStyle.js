@@ -7,12 +7,12 @@ const styles = StyleSheet.create({
     paddingTop:20
   },
   line: {
+    width:'100%',
     flexDirection: "row",
-    width:'80%',
     paddingVertical:'1%'
   },
   setWidth: {
-    width: "30%",
+    width: "40%",
   },
   fontKey: {
     color: "rgba(99, 115, 148, 1)",

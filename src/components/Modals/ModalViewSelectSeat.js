@@ -47,7 +47,7 @@ const ModalViewSelectSeat = (props) => {
                     key={e.type}
                     alotContet={true}
                     Renderchilds={RenderBtnBoxText(e.type,e.price)}
-                    ContainerStyle={[styles.Button,CheckHaveKey(e.type) === e.type  ? {backgroundColor:'rgba(252, 109, 25, 1)'}:{}]}
+                    ContainerStyle={[styles.Button,CheckHaveKey(e) === e.type ? {backgroundColor:'rgba(252, 109, 25, 1)'}:{}]}
                     onPress={() => ButtonTypesOnPress(e)}/>
                 })
                }

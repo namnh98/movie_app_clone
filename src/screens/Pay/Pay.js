@@ -7,6 +7,8 @@ import Ticket from "../../components/ticket/Ticket";
 import SelectSeatsBar from "../../components/TopBar/SelectSeatsBar";
 import { Modal } from "react-native";
 import YourTicket from "../../components/Modals/YourTicket";
+import { useRoute } from "@react-navigation/native";
+
 const payList = {
   Cinema: "Eurasia Cinema7",
   Date: "6 April 2022, 14:40",
@@ -21,8 +23,15 @@ const bills = {
 const Pay = () => {
   const [number, onChangeNumber] = React.useState("");
   const [modalVisible, setModalVisible] = React.useState(false);
+  const {data} = useRoute().params
+  const billsData = {}
+  data.forEach((e) => {
+    billsData[`${e.id} Type: ${e.type}`] = `${e.price} ₸`
+  })
+  console.log(billsData)
+
   const RenderBill = () => {
-    return <MoviesType obj={bills} />;
+    return <MoviesType obj={billsData} />;
   };
   const topContent = () => {
     return (
