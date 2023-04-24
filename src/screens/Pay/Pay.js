@@ -11,24 +11,17 @@ import styles from './PayStyle';
 const payList = {
   Cinema: 'Eurasia Cinema7',
   Date: '6 April 2022, 14:40',
-  Hall: '6th',
-  Seats: '7 row (7, 8)',
 };
-const bills = {
-  '1 x Adult': '2200 ₸',
-  '1 x Child': '2200 ₸',
-  '2 total': '3200 ₸',
-};
+
 const Pay = () => {
+  
   const [number, onChangeNumber] = React.useState('');
   const [modalVisible, setModalVisible] = React.useState(false);
-  const { data } = useRoute()?.params;
-
-  const billsData = useMemo(() => {
-    data.forEach((e) => {
-      return (billsData[`${e.id} Type: ${e.type}`] = `${e.price} ₸`);
-    });
-  }, []);
+  const { data } = useRoute().params;
+  const billsData = {}
+  data.forEach((e) => {
+    billsData[`${e.id} Type: ${e.type}`] = `${e.price} ₸`;
+  });
 
   const RenderBill = () => {
     return <MoviesType obj={billsData} />;

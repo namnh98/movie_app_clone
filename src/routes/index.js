@@ -22,7 +22,7 @@ const MainRoutes = () => {
         <MainStack.Screen name={SCREEN_NAME.PAY} component={Pay} />
       </MainStack.Navigator>
     </NavigationContainer>
-    
+
   );
 };
 

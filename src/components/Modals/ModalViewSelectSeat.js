@@ -1,4 +1,4 @@
-import React,{useState}from 'react'
+import React, { useState } from 'react'
 import { Text, View } from 'react-native'
 import styles from './ModalViewSelectSeatStyle'
 import ModalViewCS from './ModalViewCS'
@@ -6,71 +6,64 @@ import Button from '../Button/Button'
 import { isFound } from '../../constants/common'
 const typeBoard = [
     {
-      type: "Adult",
-      price: "2000",
+        type: "Adult",
+        price: "2000",
     },
     {
-      type: "Child",
-      price: "1000",
+        type: "Child",
+        price: "1000",
     },
     {
-      type: "Student",
-      price: "1500",
+        type: "Student",
+        price: "1500",
     },
 ];
 
 const ModalViewSelectSeat = (props) => {
     const {
         CurrentSeat = null,
-        Currenttype = null,
         DeSelectOnPress,
         DoneOnPress,
         ButtonTypesOnPress,
         arr = [],
     } = props
 
-    const CheckHaveKey = (type) => {
-        const rs = arr.forEach((e) => {
-            return e.type === type && e.id === CurrentSeat.id ? {backgroundColor:'rgba(252, 109, 25, 1)'} : {}
-        })
-        console.log(rs)
-        return rs
-    }
-    
-    const RenderBtnTypes=()=>{
-        return(
+
+
+    const RenderBtnTypes = () => {
+        return (
             <View>
-               <View>
-               {
-                typeBoard.map((e) => {
-                    
-                    return <Button
-                    key={e.type}
-                    alotContet={true}
-                    Renderchilds={RenderBtnBoxText(e.type,e.price)}
-                    ContainerStyle={[styles.Button,CheckHaveKey(e)]}
-                    onPress={() => ButtonTypesOnPress(e)}/>
-                })
-               }
+                <View>
+                    {
+                        typeBoard.map((e) => {
+
+                            return <Button
+                                key={e.type}
+                                alotContet={true}
+                                Renderchilds={RenderBtnBoxText(e.type, e.price)}
+                                ContainerStyle={[styles.Button,]}
+                                onPress={() => ButtonTypesOnPress(e)} />
+                        })
+                    }
                 </View>
                 <View style={styles.boxResultBtn}>
                     <Button
                         TypeTagChild={'Text'}
                         content={'DeSelect'}
-                        ContainerStyle={[styles.btn,styles.btnDeSelect]}
+                        ContainerStyle={[styles.btn, styles.btnDeSelect]}
                         ContentStyle={styles.fontTitle}
-                        onPress={DeSelectOnPress}/>
+                        onPress={DeSelectOnPress} />
                     <Button
                         TypeTagChild={'Text'}
                         content={'Done'}
-                        ContainerStyle={[styles.btn,styles.btnDone]}
+                        ContainerStyle={[styles.btn, styles.btnDone]}
                         ContentStyle={styles.fontTitle}
-                        onPress={DoneOnPress}/>
-                </View> 
+                        onPress={DoneOnPress} />
+                </View>
             </View>
         )
     }
-    const RenderBtnBoxText =(type,price) => {
+    const RenderBtnBoxText = (type, price) => {
         return (
             <View style={styles.BoxTypeBtn}>
                 <Text style={styles.fontTitle}>{type || ''}</Text>
@@ -78,12 +71,12 @@ const ModalViewSelectSeat = (props) => {
             </View>
         )
     }
-  return (
-    <ModalViewCS
-    titleContent={'Select ticket type'}
-    SubContent={CurrentSeat.id || 'loi'}
-    renderContent={RenderBtnTypes()}/>
-  )
+    return (
+        <ModalViewCS
+            titleContent={'Select ticket type'}
+            SubContent={CurrentSeat.id || 'loi'}
+            renderContent={RenderBtnTypes()} />
+    )
 }
 
 export default ModalViewSelectSeat

@@ -1,31 +1,34 @@
 import { StyleSheet } from 'react-native';
-
+import {
+  scale,
+  fontScale
+} from 'react-native-utils-scale'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor:'#111620',
   },
   content:{
-    paddingHorizontal:16,
+    paddingHorizontal:scale(16),
     flex:1,
   },
   Header:{
     flexDirection:'row',
     justifyContent:'space-between',
-    paddingVertical:'4%'
+    paddingVertical:scale(6)
   },
   title:{
     color:'#FFFFFF',
     fontWeight:'700',
-    fontSize:24
+    fontSize:fontScale(24)
   },
   BtnSeacrch:{
-    paddingHorizontal:10,
-    paddingVerticale:10,
+    padding:scale(10),
     justifyContent:'center'
   },
   FlatListContainerStyle:{
-    paddingVertical:'10%',
+    width:'100%',
+    paddingVertical:scale(10),
   },
 });
 

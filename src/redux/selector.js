@@ -1,0 +1,1 @@
+export const SelectedSeatSL = (state) => state.SelectedSeat

@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Image,
   Modal,
@@ -17,56 +17,51 @@ import SelectSeatsBar from '../../components/TopBar/SelectSeatsBar';
 import { isFound } from '../../constants/common';
 import { SCREEN_NAME } from '../../constants/screenNames';
 import styles from './SelectSeatStyle';
+import { useSelector, useDispatch } from 'react-redux';
+import { SelectedSeatSL } from '../../redux/selector';
+import { AddSeat, removeSeat } from '../../redux/actions';
 
 const SelectSeat = () => {
   const navigation = useNavigation();
-  const [SelectedSeats, setSelectedSeats] = useState([]);
   const [isZoom, setIsZoom] = useState(false);
   const [isModal, setisModal] = useState(false);
-  const [currSeat, setcurrSeat] = useState({});
-  const [currType, setcurrType] = useState({});
-  const [total, settotal] = useState({});
+  const [Seat, setSeat] = useState({})
+  const [type, settype] = useState({})
+  const SelectedSeats = useSelector(SelectedSeatSL)
+  const dispatch = useDispatch()
+  console.log(SelectedSeats)
 
-  // console.log(SelectedSeats)
-
-  let totalSeats = [];
-  for (let i = 0; i < 100; i++) {
-    totalSeats.push({
-      id: `seat${i + 1}`,
-      lable: `${i + 1}`,
-    });
-  }
+  const totalSeats = useMemo(() => {
+    const arr = []
+    for (let i = 0; i < 100; i++) {
+      arr.push({
+        id: `seat${i + 1}`,
+        lable: `${i + 1}`,
+      });
+    }
+    return arr
+  }, []);
+  // console.log(totalSeats)
 
   const renderIcon = () => {
-    totalSeats.map((e, i) => {
+    const rs = totalSeats.map((e, i) => {
       return (
         <View key={i} style={styles.paddingSeat}>
           <Icons StatusIc={'Available'} />
         </View>
       );
     });
+    return rs
   };
 
-  const RemoveElement = (obj) => {
-    const arr = Array.from(SelectedSeats);
-    const index = arr.findIndex((e) => {
-      return e.id === obj.id;
-    });
 
-    if (index !== -1) {
-      arr.splice(index, 1);
-    }
-
-    setSelectedSeats(arr);
-  };
-
-  const onPressSeat = (e,i) => {
-    setcurrSeat(e)
+  const onPressSeat = (e) => {
+    setSeat(e)
     setisModal(!isModal)
   };
 
   const DeSelectEvent = (currSeat) => {
-    RemoveElement(currSeat);
+    dispatch(removeSeat(currSeat))
     setisModal(false);
   };
 
@@ -95,19 +90,19 @@ const SelectSeat = () => {
 
   const DoneEvent = () => {
     setisModal(false);
-    if (!isFound({ ...currSeat, ...currType }, SelectedSeats)) {
-      setSelectedSeats(SelectedSeats.concat({ ...currSeat, ...currType }));
+    if (!isFound({ ...Seat, ...type }, SelectedSeats)) {
+      dispatch(AddSeat({ ...Seat, ...type }))
     }
   };
 
-  const ButtonEvent = (e) => {
-    setcurrType(e);
-    if (isFound({ ...currSeat, ...currType }, SelectedSeats)) {
+  const ButtonModalEvent = (e) => {
+    settype(e)
+    if (isFound({ ...Seat, ...type }, SelectedSeats)) {
       const index = SelectedSeats.findIndex((obj) => {
-        return obj.id === currSeat.id;
+        return obj.id === Seat.id;
       });
-      SelectedSeats[index].type = e.type;
-      SelectedSeats[index].price = e.price;
+      SelectedSeats[index].type = e.type
+      SelectedSeats[index].price = e.price
     }
   };
 
@@ -149,11 +144,10 @@ const SelectSeat = () => {
         >
           <TouchableHighlight>
             <ModalViewSelectSeat
-              Currenttype={currType}
-              CurrentSeat={currSeat}
-              DeSelectOnPress={() => DeSelectEvent(currSeat)}
+              CurrentSeat={Seat}
+              DeSelectOnPress={() => DeSelectEvent({ ...Seat, ...type })}
               arr={SelectedSeats}
-              ButtonTypesOnPress={ButtonEvent}
+              ButtonTypesOnPress={ButtonModalEvent}
               DoneOnPress={() => DoneEvent()}
             />
           </TouchableHighlight>

@@ -1,34 +1,36 @@
 import { StyleSheet } from "react-native";
+import { fontScale, scale } from "react-native-utils-scale";
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    width: "80%",
     flexDirection: "column",
-    paddingTop:20
+    paddingTop:scale(20),
+    paddingRight:scale(20)
   },
   line: {
     width:'100%',
     flexDirection: "row",
-    paddingVertical:'1%'
+    paddingVertical:scale(2)
   },
   setWidth: {
     width: "40%",
   },
   fontKey: {
     color: "rgba(99, 115, 148, 1)",
-    fontSize: 16,
+    fontSize: fontScale(16),
     fontWeight: "400",
-    lineHeight: 26,
+    lineHeight: scale(26),
   },
   fontValue: {
     color: "white",
-    fontSize: 16,
+    fontSize: fontScale(16),
     fontWeight: "500",
-    lineHeight: 26,
+    lineHeight: scale(26),
   },
   iconValue: {
-    width: 38,
-    height: 26,
+    width: scale(38),
+    height: scale(26),
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",

@@ -1,5 +1,6 @@
 import { StyleSheet} from 'react-native'
 import { APP_FONTS } from '../../assets/fonts'
+import { fontScale, scale } from 'react-native-utils-scale'
 
 const styles = StyleSheet.create({
     container:{
@@ -8,16 +9,17 @@ const styles = StyleSheet.create({
         backgroundColor:'rgba(26, 34, 50, 1)'
     },
     boxImage:{
-        height:210,
+        height:scale(210),
         justifyContent:'center',
         alignItems:'center'
     },
     ImageStyle:{
         width:'100%',
+        height:scale(210)
     },
     containerRating:{
         flexDirection:'row',
-        height:70,
+        height:scale(70),
         backgroundColor:'rgba(31, 41, 61, 1)'
     },
     flexItem:{
@@ -32,32 +34,32 @@ const styles = StyleSheet.create({
     fontStyle:{
         color:'white',
         fontWeight:'600',
-        fontSize:20
+        fontSize:fontScale(20)
     },
     subfontStyle:{
         color:'rgba(99, 115, 148, 1)'
     },
     containerContent:{
         width:'100%',
-        height:292,
+        height:scale(292),
         backgroundColor:'rgba(26, 34, 50, 1)',
-        padding:16
+        padding:scale(16)
     },
     Description:{
         color:'white',
-        fontSize:14,
+        fontSize:fontScale(14),
         fontWeight:'400',
-        lineHeight:20
+        lineHeight:scale(20)
     },
     ButtonBackground:{
         width:'100%',
-        height:88,
+        height:scale(88),
         position:'absolute',
         bottom:0,
         left:0,
         right:0,
         backgroundColor:'rgba(31, 41, 61, 1)',
-        padding:16
+        padding:scale(16)
     },
     ButtonSelectSession:{
         width:'100%',

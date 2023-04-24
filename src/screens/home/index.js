@@ -2,19 +2,16 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {
   FlatList,
-  Image,
-  Modal,
-  ScrollView,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import Button from '../../components/Button/Button';
 import CardCar from '../../components/Card/CardCar';
 import HomeBar from '../../components/TopBar/HomeBar';
-import { MovieData, MovieData2 } from '../../constants/MovieData';
+import {  MovieData2 } from '../../constants/MovieData';
 import { SCREEN_NAME } from '../../constants/screenNames';
 import styles from './styles';
+import { scale } from 'react-native-utils-scale';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -23,8 +20,8 @@ const HomeScreen = () => {
       <CardCar
         data={item}
         container2={[
-          index % 2 === 0 ? { marginRight: '27%' } : {},
-          { marginBottom: '20%' },
+          index % 2 === 0 ? {marginRight:scale(60)} : {},
+          {marginBottom:scale(80)}
         ]}
         onPress={() => navigation.navigate(SCREEN_NAME.DETAIL)}
       />
@@ -48,7 +45,7 @@ const HomeScreen = () => {
           renderItem={renderItemMovies}
           keyExtractor={(item) => String(item.id)}
           numColumns={2}
-          ItemSeparatorComponent={<View style={styles.Separator} />}
+          showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.FlatListContainerStyle}
           ListEmptyComponent={() => <Text>{'Trống'}</Text>}
         />
@@ -59,4 +56,4 @@ const HomeScreen = () => {
 
 export default HomeScreen;
 
-//showsVerticalScrollIndicator an scroll cua flatlist
+

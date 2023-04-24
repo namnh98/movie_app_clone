@@ -1,13 +1,14 @@
 import { StyleSheet } from "react-native";
+import { fontScale, scale } from "react-native-utils-scale";
 
 const styles = StyleSheet.create({
   container: {
     width:'100%',
-    height: 160,
+    height: scale(160),
     backgroundColor: "#1F293D",
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: "6%",
+    paddingHorizontal: scale(28),
   },
   TopBarContent: {
     flexDirection: "row",
@@ -21,13 +22,13 @@ const styles = StyleSheet.create({
   Title: {
     color: "white",
     fontWeight: 700,
-    fontSize: 20,
+    fontSize: fontScale(20),
   },
   SubTitle: {
     color: "rgba(99, 115, 148, 1)",
   },
   dateAndTimeBtn: {
-    height: 64,
+    height: scale(64),
     position: "absolute",
     left: 0,
     right: 0,
@@ -35,11 +36,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     flexDirection: "row",
-    paddingHorizontal: "6%",
+    paddingHorizontal: scale(16),
   },
   ButtonStyle: {
-    width: 200,
-    height: 40,
+    width: scale(200),
+    height: scale(40),
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -50,8 +51,8 @@ const styles = StyleSheet.create({
   btnfont: {
     color: "white",
     fontWeight: 500,
-    fontSize: 16,
-    marginLeft: "4%",
+    fontSize: fontScale(16),
+    marginLeft: scale(14),
   },
 });
 export default styles;
