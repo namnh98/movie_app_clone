@@ -3,19 +3,24 @@ import { Text, View } from 'react-native'
 import styles from './ModalViewSelectSeatStyle'
 import ModalViewCS from './ModalViewCS'
 import Button from '../Button/Button'
-import { isFound } from '../../constants/common'
+import { useSelector } from 'react-redux'
+import { SelectedSeatSL } from '../../redux/selector'
+
 const typeBoard = [
     {
         type: "Adult",
         price: "2000",
+        isEnabled: false
     },
     {
         type: "Child",
         price: "1000",
+        isEnabled: false
     },
     {
         type: "Student",
         price: "1500",
+        isEnabled: false
     },
 ];
 
@@ -25,11 +30,14 @@ const ModalViewSelectSeat = (props) => {
         DeSelectOnPress,
         DoneOnPress,
         ButtonTypesOnPress,
-        arr = [],
     } = props
-
-
-
+    const SelectedSeats = useSelector(SelectedSeatSL)
+    const checkEnalble = (type) => {
+        const isEnabled = (Element) => type.type === Element.type && CurrentSeat.id === Element.id
+        const rs = SelectedSeats.some(isEnabled)
+        console.log(rs)
+        return rs
+    }
     const RenderBtnTypes = () => {
         return (
             <View>
@@ -41,7 +49,7 @@ const ModalViewSelectSeat = (props) => {
                                 key={e.type}
                                 alotContet={true}
                                 Renderchilds={RenderBtnBoxText(e.type, e.price)}
-                                ContainerStyle={[styles.Button,]}
+                                ContainerStyle={[styles.Button, checkEnalble(e) ? { backgroundColor: 'red' } : {}]}
                                 onPress={() => ButtonTypesOnPress(e)} />
                         })
                     }
