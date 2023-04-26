@@ -20,3 +20,8 @@ export const changeType = (data) => {
     }
 }
 
+export const clearSeat = () => {
+    return {
+        type: 'SelectedSeat/clear',
+    }
+}

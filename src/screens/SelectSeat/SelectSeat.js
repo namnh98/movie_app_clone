@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   Image,
@@ -23,13 +23,15 @@ import { AddSeat, removeSeat } from '../../redux/actions';
 
 const SelectSeat = () => {
   const navigation = useNavigation();
-  const [isZoom, setIsZoom] = useState(false);
   const [isModal, setisModal] = useState(false);
+  const [isZoom, setIsZoom] = useState(false);
   const [Seat, setSeat] = useState({})
   const [type, settype] = useState({})
   const SelectedSeats = useSelector(SelectedSeatSL)
   const dispatch = useDispatch()
-  // console.log(SelectedSeats)
+  const { MovieData } = useRoute().params
+
+  console.log(SelectedSeats)
 
   const totalSeats = useMemo(() => {
     const arr = []
@@ -41,7 +43,6 @@ const SelectSeat = () => {
     }
     return arr
   }, []);
-  // console.log(totalSeats)
 
   const renderIcon = () => {
     const rs = totalSeats.map((e, i) => {
@@ -108,7 +109,7 @@ const SelectSeat = () => {
 
   return (
     <View style={styles.container}>
-      <SelectSeatsBar BtnRightOnPress={() => setIsZoom(!isZoom)} />
+      <SelectSeatsBar content={MovieData.l} BtnRightOnPress={() => setIsZoom(!isZoom)} />
       <View style={styles.TagList}>
         <StausIcon status={'Available'} text={'Available'} />
         <StausIcon status={'Occupied'} text={'Occupied'} />
@@ -128,7 +129,7 @@ const SelectSeat = () => {
         style={styles.buyBtn}
         onPress={() =>
           navigation.navigate(SCREEN_NAME.PAY, {
-            data: SelectedSeats,
+            payName: MovieData.l
           })
         }
       />

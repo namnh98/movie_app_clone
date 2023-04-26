@@ -10,7 +10,7 @@ const SelectSeatsBar = (props) => {
     content = "Pay for tickets",
     PatchImageRight,
     BtnRightOnPress,
-    ishideLeftBtn=true
+    ishideLeftBtn = true
   } = props;
   const navigation = useNavigation();
 
@@ -33,17 +33,17 @@ const SelectSeatsBar = (props) => {
     return (
       <View style={styles.TextBox}>
         <Text style={styles.Title}>Eurasia Cinema7</Text>
-        <Text style={styles.SubTitle}>The Batman</Text>
+        <Text style={styles.SubTitle}>{content || 'err'}</Text>
       </View>
     );
   };
   const renderBtnLeft = () => {
-    return(
+    return (
       <Button
-          TypeTagChild={"icon"}
-          PatchImage={require("../../assets/img/icons/BackArrow.png")}
-          onPress={() => navigation.goBack()}
-        />
+        TypeTagChild={"icon"}
+        PatchImage={require("../../assets/img/icons/BackArrow.png")}
+        onPress={() => navigation.goBack()}
+      />
     )
   }
   return (
@@ -54,7 +54,7 @@ const SelectSeatsBar = (props) => {
       ]}
     >
       <View style={styles.TopBarContent}>
-        {ishideLeftBtn ? renderBtnLeft() : <View/>}
+        {ishideLeftBtn ? renderBtnLeft() : <View />}
         {mode === "date" ? (
           renderBoxTitle()
         ) : (

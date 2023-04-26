@@ -9,6 +9,7 @@ import Sessions from "../about/Sessions";
 const SwitchBar = (props) => {
   let [TabViewKey, setTabViewKey] = useState("fist");
   const navigation = useNavigation();
+  const { data } = props
   const [routes] = useState([
     {
       key: "fist",
@@ -64,7 +65,7 @@ const SwitchBar = (props) => {
             style={styles.Button_ic}
             onPress={() => navigation.goBack()}
           />
-          <Text style={styles.Title}>The Batman</Text>
+          <Text style={styles.Title}>{data.l || 'err'}</Text>
         </View>
         <View style={styles.container_Btn}>{renderSwicthButtons()}</View>
       </View>
@@ -73,7 +74,7 @@ const SwitchBar = (props) => {
   return (
     <React.Fragment>
       {RenderTabView()}
-      {TabViewKey === "fist" ? <About /> : <Sessions />}
+      {TabViewKey === "fist" ? <About MovieInfo={data} /> : <Sessions />}
     </React.Fragment>
   );
 };

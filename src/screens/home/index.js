@@ -8,22 +8,27 @@ import {
 import Button from '../../components/Button/Button';
 import CardCar from '../../components/Card/CardCar';
 import HomeBar from '../../components/TopBar/HomeBar';
-import {  MovieData2 } from '../../constants/MovieData';
+import { MovieData } from '../../constants/MovieData';
 import { SCREEN_NAME } from '../../constants/screenNames';
 import styles from './styles';
 import { scale } from 'react-native-utils-scale';
 
 const HomeScreen = () => {
+
   const navigation = useNavigation();
+
   const renderItemMovies = ({ item, index }) => {
     return (
       <CardCar
         data={item}
+        patch={item.i.imageUrl}
         container2={[
-          index % 2 === 0 ? {marginRight:scale(60)} : {},
-          {marginBottom:scale(80)}
+          index % 2 === 0 ? { marginRight: scale(60) } : {},
+          { marginBottom: scale(80) }
         ]}
-        onPress={() => navigation.navigate(SCREEN_NAME.DETAIL)}
+        onPress={() => navigation.navigate(SCREEN_NAME.DETAIL, {
+          Movie: item,
+        })}
       />
     );
   };
@@ -41,7 +46,7 @@ const HomeScreen = () => {
           />
         </View>
         <FlatList
-          data={MovieData2}
+          data={MovieData}
           renderItem={renderItemMovies}
           keyExtractor={(item) => String(item.id)}
           numColumns={2}

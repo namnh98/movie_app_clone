@@ -25,19 +25,26 @@ const typeBoard = [
 ];
 
 const ModalViewSelectSeat = (props) => {
+
     const {
         CurrentSeat = null,
         DeSelectOnPress,
         DoneOnPress,
         ButtonTypesOnPress,
     } = props
+
     const SelectedSeats = useSelector(SelectedSeatSL)
+
     const checkEnalble = (type) => {
         const isEnabled = (Element) => type.type === Element.type && CurrentSeat.id === Element.id
         const rs = SelectedSeats.some(isEnabled)
-        console.log(rs)
         return rs
     }
+
+    const onPressCombine = (e) => {
+        ButtonTypesOnPress(e)
+    }
+
     const RenderBtnTypes = () => {
         return (
             <View>
@@ -49,8 +56,8 @@ const ModalViewSelectSeat = (props) => {
                                 key={e.type}
                                 alotContet={true}
                                 Renderchilds={RenderBtnBoxText(e.type, e.price)}
-                                ContainerStyle={[styles.Button, checkEnalble(e) ? { backgroundColor: 'red' } : {}]}
-                                onPress={() => ButtonTypesOnPress(e)} />
+                                ContainerStyle={[styles.Button, checkEnalble(e) ? { backgroundColor: 'rgba(255, 128, 54, 1)' } : {}]}
+                                onPress={() => onPressCombine(e)} />
                         })
                     }
                 </View>
@@ -71,6 +78,7 @@ const ModalViewSelectSeat = (props) => {
             </View>
         )
     }
+
     const RenderBtnBoxText = (type, price) => {
         return (
             <View style={styles.BoxTypeBtn}>
@@ -79,6 +87,7 @@ const ModalViewSelectSeat = (props) => {
             </View>
         )
     }
+
     return (
         <ModalViewCS
             titleContent={'Select ticket type'}

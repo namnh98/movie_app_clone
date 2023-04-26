@@ -5,16 +5,29 @@ import MoviesType from "./MoviesType";
 import Button from "../Button/Button";
 import { useNavigation } from "@react-navigation/native";
 import { SCREEN_NAME } from "../../constants/screenNames";
-import { MovieDetails } from "../../constants/MovieData";
+import { useDispatch } from "react-redux";
+import { clearSeat } from "../../redux/actions";
 
-const about = () => {
+const about = (props) => {
+  const {
+    MovieInfo,
+  } = props
+  const dispatch = useDispatch()
   const navigation = useNavigation()
+  const MovieDetails = {
+    Runtime: "02:56",
+    Release: MovieInfo.y,
+    Genre: MovieInfo.q,
+    Director: "Matt Reeves",
+    Cast: MovieInfo.s,
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.boxImage}>
         <Image
           style={styles.ImageStyle}
-          source={require("../../assets/img/abouts/Video.png")}
+          source={MovieInfo.i.imageUrl || require("../../assets/img/abouts/Video.png")}
         />
       </View>
       <View style={styles.containerRating}>
@@ -33,7 +46,7 @@ const about = () => {
           political figures in Gotham, Batman is forced to investigate the
           city's hidden corruption and question his family's involvement.
         </Text>
-        <MoviesType obj={MovieDetails}/>
+        <MoviesType obj={MovieDetails} />
       </View>
       <View style={styles.ButtonBackground}>
         <Button
@@ -41,11 +54,15 @@ const about = () => {
           content={'Select session'}
           style={styles.ButtonSelectSession}
           ContentStyle={styles.fontStyle}
-          onPress={() => navigation.navigate(SCREEN_NAME.SELECT_SEATS)}/>
+          onPress={() => {
+            dispatch(clearSeat())
+            navigation.navigate(SCREEN_NAME.SELECT_SEATS, {
+              MovieData: MovieInfo
+            })
+          }} />
       </View>
     </View>
   );
 };
 
 export default about;
- 

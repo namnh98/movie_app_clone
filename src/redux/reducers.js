@@ -3,11 +3,14 @@ const intit = {
     SelectedSeat: [
 
     ],
+    MovieSelected: [
+
+    ]
 }
 
 const rootReducers = (state = intit, action) => {
     const arr = state.SelectedSeat
-    const index = arr.findIndex((obj) => obj.id === action.payload.id)
+    const index = arr.findIndex((obj) => obj?.id === action.payload?.id)
     switch (action.type) {
         case 'SelectedSeat/AddSeat':
             return {
@@ -23,6 +26,11 @@ const rootReducers = (state = intit, action) => {
             return {
                 ...state,
                 SelectedSeat: [...arr]
+            }
+        case 'SelectedSeat/clear':
+            return {
+                ...state,
+                SelectedSeat: []
             }
         default:
             return {

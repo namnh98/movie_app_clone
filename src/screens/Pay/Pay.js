@@ -1,12 +1,15 @@
-import { useRoute } from '@react-navigation/native';
 import React, { useMemo } from 'react';
-import { Image, Modal, Text, TextInput, View } from 'react-native';
+import { Modal, Text, TextInput, View } from 'react-native';
 import Button from '../../components/Button/Button';
 import YourTicket from '../../components/Modals/YourTicket';
 import SelectSeatsBar from '../../components/TopBar/SelectSeatsBar';
 import MoviesType from '../../components/about/MoviesType';
 import Ticket from '../../components/ticket/Ticket';
 import styles from './PayStyle';
+import { useSelector } from 'react-redux';
+import { SelectedSeatSL } from '../../redux/selector';
+import { useRoute } from '@react-navigation/native';
+
 
 const payList = {
   Cinema: 'Eurasia Cinema7',
@@ -14,14 +17,17 @@ const payList = {
 };
 
 const Pay = () => {
-  
+
   const [number, onChangeNumber] = React.useState('');
   const [modalVisible, setModalVisible] = React.useState(false);
-  const { data } = useRoute().params;
-  const billsData = {}
-  data.forEach((e) => {
-    billsData[`${e.id} Type: ${e.type}`] = `${e.price} ₸`;
-  });
+  const SelectedSeats = useSelector(SelectedSeatSL)
+  const { payName } = useRoute().params
+
+  const billsData = useMemo(() => {
+    return SelectedSeats.reduce((acc, cur) => {
+      return { ...acc, [`${cur.id} ${cur.type}`]: cur.price }
+    }, {})
+  }, [])
 
   const RenderBill = () => {
     return <MoviesType obj={billsData} />;
@@ -30,7 +36,7 @@ const Pay = () => {
   const topContent = () => {
     return (
       <React.Fragment>
-        <Text style={styles.Title}>The Batman</Text>
+        <Text style={styles.Title}>{payName || 'err'}</Text>
         <MoviesType obj={payList} />
         <View style={styles.line} />
         {RenderBill()}
@@ -66,7 +72,7 @@ const Pay = () => {
         visible={modalVisible}
         onRequestClose={() => setModalVisible(!modalVisible)}
       >
-        <YourTicket />
+        <YourTicket obj={billsData} MovieName={payName} />
       </Modal>
       <Ticket
         renderTopBar={<SelectSeatsBar mode={'none_date'} />}
