@@ -31,7 +31,7 @@ const SelectSeat = () => {
   const dispatch = useDispatch()
   const { MovieData } = useRoute().params
 
-  console.log(SelectedSeats)
+  // console.log(SelectedSeats)
 
   const totalSeats = useMemo(() => {
     const arr = []

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { Text, View } from 'react-native'
 import styles from './ModalViewSelectSeatStyle'
 import ModalViewCS from './ModalViewCS'
@@ -27,13 +27,14 @@ const typeBoard = [
 const ModalViewSelectSeat = (props) => {
 
     const {
-        CurrentSeat = null,
+        CurrentSeat,
         DeSelectOnPress,
         DoneOnPress,
         ButtonTypesOnPress,
     } = props
 
     const SelectedSeats = useSelector(SelectedSeatSL)
+    console.log(SelectedSeats)
 
     const checkEnalble = (type) => {
         const isEnabled = (Element) => type.type === Element.type && CurrentSeat.id === Element.id

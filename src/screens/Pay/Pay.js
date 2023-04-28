@@ -65,7 +65,14 @@ const Pay = () => {
     );
   };
   return (
-    <React.Fragment>
+    <>
+
+      <Ticket
+        renderTopBar={<SelectSeatsBar mode={'none_date'} />}
+        renderContentTop={topContent()}
+        renderContentBottom={bottomContent()}
+      />
+      {/* Modal purchased */}
       <Modal
         animationType="slide"
         transparent={false}
@@ -74,12 +81,7 @@ const Pay = () => {
       >
         <YourTicket obj={billsData} MovieName={payName} />
       </Modal>
-      <Ticket
-        renderTopBar={<SelectSeatsBar mode={'none_date'} />}
-        renderContentTop={topContent()}
-        renderContentBottom={bottomContent()}
-      />
-    </React.Fragment>
+    </>
   );
 };
 
